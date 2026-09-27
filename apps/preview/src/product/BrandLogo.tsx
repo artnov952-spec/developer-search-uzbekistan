@@ -5,24 +5,25 @@ type BrandLogoProps = SVGProps<SVGSVGElement> & {
   tone?: 'ink' | 'inverse' | 'accent'
 }
 
-/** Сокращённый фирменный знак сервиса «Разработка». Геометрия не зависит от темы — меняется только currentColor. */
+/** Официальный знак сервиса: фирменная K, окрашенная токенами текущей продуктовой палитры. */
 export function BrandLogo({ compact = false, tone = 'ink', className, ...props }: BrandLogoProps) {
   const toneClass = tone === 'inverse' ? 'brand-logo--inverse' : tone === 'accent' ? 'brand-logo--accent' : ''
+  const common = { role: 'img', 'aria-label': 'Разработка', className: `${className ?? ''} brand-logo ${toneClass}`.trim(), ...props }
 
   if (compact) {
     return (
-      <svg viewBox="0 0 36 36" role="img" aria-label="Разработка" className={`${className ?? ''} brand-logo ${toneClass}`.trim()} {...props}>
-        <rect x="1" y="1" width="34" height="34" rx="10" fill="currentColor" />
-        <path d="M12 10h7.1c5 0 8.1 2.6 8.1 6.8 0 4.3-3.1 7-8.1 7H17V29h-5V10Zm5 4.2v5.5h2c2.1 0 3.2-1 3.2-2.8 0-1.7-1.1-2.7-3.2-2.7h-2Z" fill="var(--brand-logo-cutout, white)" />
+      <svg viewBox="0 0 36 36" {...common}>
+        <path className="brand-logo__body" d="M8 7h6v8.1L21.2 7h7.4l-9.2 10.1L29 29h-7.5L15.2 21 14 22.3V29H8V7Z" />
+        <path className="brand-logo__accent" d="M25 7h5v5h-5z" />
       </svg>
     )
   }
 
   return (
-    <svg viewBox="0 0 188 36" role="img" aria-label="Разработка" className={`${className ?? ''} brand-logo ${toneClass}`.trim()} {...props}>
-      <rect x="1" y="1" width="34" height="34" rx="10" fill="currentColor" />
-      <path d="M12 10h7.1c5 0 8.1 2.6 8.1 6.8 0 4.3-3.1 7-8.1 7H17V29h-5V10Zm5 4.2v5.5h2c2.1 0 3.2-1 3.2-2.8 0-1.7-1.1-2.7-3.2-2.7h-2Z" fill="var(--brand-logo-cutout, white)" />
-      <text x="47" y="25" fill="currentColor" fontFamily="Onest, Inter, system-ui, sans-serif" fontSize="20" fontWeight="720" letterSpacing="-0.7">Разработка</text>
+    <svg viewBox="0 0 188 36" {...common}>
+      <path className="brand-logo__body" d="M8 7h6v8.1L21.2 7h7.4l-9.2 10.1L29 29h-7.5L15.2 21 14 22.3V29H8V7Z" />
+      <path className="brand-logo__accent" d="M25 7h5v5h-5z" />
+      <text x="43" y="25" fill="currentColor" fontFamily="Onest, Inter, system-ui, sans-serif" fontSize="20" fontWeight="720" letterSpacing="-0.7">Разработка</text>
     </svg>
   )
 }
