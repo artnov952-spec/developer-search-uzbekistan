@@ -35,7 +35,7 @@ function candidatesFromCrawl(json:CrawlFile):Candidate[] {
   const rows:Candidate[]=[]
   json.candidates.forEach((entry,index)=>(entry.contacts||[]).forEach((contact,j)=>{
     const url=entry.inputUrl||contact.sourceUrl
-    const name=entry.name||entry.candidateId||new URL(url).hostname
+    const name=entry.name||contact.value||entry.candidateId||new URL(url).hostname
     rows.push({id:`crawl-${entry.candidateId||index}-${j}`,initials:initials(name),name,role:'Публичный профиль',level:'Не указан',city:'Не указано',mode:'Не указано',salary:'Не указано',skills:[],status:'Публичный контакт найден',contact:contact.value,contactType:contactType(contact.type),source:new URL(contact.sourceUrl).hostname,sourceUrl:contact.sourceUrl,bio:'Профиль получен детерминированным краулером из публичного источника.',match:80,color:'#dce8d2',discoveryChain:contact.discoveryChain})
   }))
   return rows
