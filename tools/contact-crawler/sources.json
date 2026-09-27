@@ -1,0 +1,21 @@
+[
+  {"id":"hh-programmers","type":"source","name":"hh.uz — программисты","url":"https://tashkent.hh.uz/resumes/programmist"},
+  {"id":"hh-it","type":"source","name":"hh.uz — IT специалисты","url":"https://tashkent.hh.uz/resumes/it_specialist"},
+  {"id":"olx-work","type":"source","name":"OLX — Работа","url":"https://www.olx.uz/rabota/"},
+  {"id":"it-market-specialists","type":"source","name":"IT Market — специалисты","url":"https://it-market.uz/specialists"},
+  {"id":"telegram-itresume","type":"source","name":"IT Resume Uzbekistan","url":"https://t.me/s/ITresume_Uzbekistan"},
+  {"id":"telegram-uzbdevelop","type":"source","name":"UZB Develop","url":"https://t.me/s/uzbdevelop"},
+  {"id":"telegram-ustozshogird","type":"source","name":"Ustoz Shogird","url":"https://t.me/s/UstozShogird"},
+  {"id":"github-uzbekistan","type":"source","name":"GitHub — разработчики Узбекистана","url":"https://github.com/search?q=location%3AUzbekistan+type%3Auser&type=users"},
+  {"id":"talent-park","type":"unsupported","name":"Talent Park","url":"https://t.me/talent_park_bot","source":"talent-park","reason":"bot-and-resident-request-only-no-stable-public-listing"},
+  {"id":"job-sites","type":"unsupported","name":"rabota.uz, uzjobs.uz, ish.uz, ishkop.uz, careerist.ru","url":"https://uzjobs.uz/r/resume.html","reason":"site-specific-public-adapters-not-implemented"},
+  {"id":"telegram-bots","type":"restricted","name":"UzITjobs bot and career bots","url":"https://t.me/UzITjobs_bot","reason":"interactive-bot-access-not-public-web"},
+  {"id":"telegram-job-channels","type":"unsupported","name":"IT vacancy channels","url":"https://t.me/ITjobs_Uzbekistan","reason":"vacancy-feeds-are-not-candidate-listings"},
+  {"id":"telegram-communities","type":"restricted","name":"Developer communities and stack chats","url":"https://t.me/uzdevgroup","reason":"group-member-data-and-private-chat-history-not-crawled"},
+  {"id":"freelance-sites","type":"unsupported","name":"Uzbek freelance sites","url":"https://uzbekcoders.uz/","reason":"site-specific-public-adapters-not-implemented"},
+  {"id":"international-freelance","type":"restricted","name":"Upwork and Toptal","url":"https://www.upwork.com/","reason":"login-rate-limits-or-paid-contact-access"},
+  {"id":"telegram-catalogs","type":"unsupported","name":"tgjob.uz and TGStat","url":"https://tgjob.uz/","reason":"catalogs-list-channels-not-candidate-profiles"},
+  {"id":"bootcamps","type":"restricted","name":"Bootcamps and schools","url":"https://najottalim.uz/","reason":"candidate-pools-are-private-and-require-hr-access"},
+  {"id":"linkedin","type":"restricted","name":"LinkedIn Uzbekistan","url":"https://www.linkedin.com/","reason":"login-required-and-automated-crawling-restricted"},
+  {"id":"github-rankings","type":"unsupported","name":"GitHub ranking services","url":"https://committers.top/uzbekistan","reason":"ranking-specific-adapters-not-implemented"}
+]

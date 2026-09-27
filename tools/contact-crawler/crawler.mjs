@@ -63,6 +63,10 @@ export async function discoverCandidateInputs(records, options={}) {
   const ordered=[...records].map((r,i)=>({r,i,p:priority(r)})).sort((a,b)=>a.p-b.p||a.i-b.i).map(x=>x.r)
   for(const record of ordered){
     const mode=record.type||record.kind||'candidate'
+    if(mode==='unsupported'||mode==='restricted'){
+      discoveryReports.push({sourceId:record.id,url:record.url,source:record.source||'unconfigured',label:record.name,status:mode==='restricted'?'restricted-source':'unsupported-source',reason:record.reason||'no-deterministic-public-adapter'})
+      continue
+    }
     if(mode!=='source'&&mode!=='listing'){direct.push(record);continue}
     const start=canonical(record.url), adapter=start&&identifySource(start)
     if(!start){discoveryReports.push({sourceId:record.id,url:record.url,status:'invalid-url'});continue}

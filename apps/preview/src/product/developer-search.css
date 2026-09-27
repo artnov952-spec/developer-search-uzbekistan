@@ -190,6 +190,7 @@ button, input { font: inherit; }
 .section-header > button, .section-header > div + button { flex:none; }
 .notice,.error-banner { display:flex; align-items:center; gap:9px; min-height:42px; margin-bottom:16px; padding:10px 13px; border:1px solid #dfe7d3; border-radius:8px; background:#f5faec; color:#536044; font-size:12px; }
 .notice svg,.error-banner svg { width:16px; flex:none; }
+.source-statuses{margin:-6px 0 16px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:11px}.source-statuses summary{padding:10px 13px;cursor:pointer;font-weight:650}.source-statuses>div{max-height:280px;overflow:auto;border-top:1px solid var(--line);padding:5px 13px}.source-statuses p{display:flex;justify-content:space-between;gap:16px;margin:0;padding:7px 0;border-bottom:1px solid var(--line)}.source-statuses p:last-child{border:0}.source-statuses span{color:var(--muted);text-align:right}.source-statuses span[data-status="contacts-found"],.source-statuses span[data-status="candidates-discovered"]{color:#4f7e13}.source-statuses span[data-status="restricted-source"],.source-statuses span[data-status="unsupported-source"],.source-statuses span[data-status="access-blocked"]{color:#9a5b16}
 .error-banner { border-color:#f2c9c9; background:#fff4f4; color:#922; }.error-banner button{margin-left:auto;border:0;background:none}.error-banner button svg{width:14px}
 .product-main .search-box { max-width:none; }
 .filter-active { background:var(--accent-soft)!important; border-color:#a8d85e!important; }

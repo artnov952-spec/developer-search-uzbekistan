@@ -1,0 +1,113 @@
+
+--- PAGE 1 ---
+
+Где искать разработчиков в Узбекистане
+Каналы, группы, сайты, форумы и точки активного сорсинга · Cloudplus · 26.09.2026
+Главный критерий: где видны сами кандидаты — открытые резюме и посты «ищу работу»
+, а не только
+вакансии от работодателей. Пометка «(проверить)» — где хэндл взят из каталога и стоит открыть t.me
+перед рассылкой.
+1. Открытые базы резюме кандидатов — главное
+hh.uz / tashkent.hh.uz — крупнейшая база резюме. Срезы:
+tashkent.hh.uz/resumes/programmist, /it
+_
+specialist. Ключевой источник.
+OLX.uz — раздел «Работа»
+, кандидаты сами пишут «ищу работу»; много самоучек и джунов.
+rabota.uz, uzjobs.uz (uzjobs.uz/r/resume.html), ish.uz, ishkop.uz — базы резюме.
+careerist.ru — отдельный поиск резюме по Узбекистану.
+2. IT Park — государственные базы под tech
+Talent Park — единая база резюме айтишников (запущена в сентябре 2026). Бот
+@talent
+_park
+_
+bot, канал @talentparkuz. Бесплатно, отдают резидентам под запрос.
+IT Market (it-market.uz) — раздел «Специалисты» = карточки разработчиков с прямым
+контактом. Канал @itmarket
+_
+uz.
+3. Telegram — именно резюме / «ищу работу»
+@ITresume
+_
+Uzbekistan — профильный канал резюме (парный к @ITjobs_Uzbekistan). Самое
+прямое попадание.
+@uzbdevelop — принимают и вакансии, и резюме.
+@UstozShogird — соискатели сами кладут CV по тегам #Shogird #Xodim; много Flutter/Java.
+@UzITjobs
+_
+bot — бот приема резюме и вакансий.
+4. Telegram — вакансии IT (кандидаты мониторят, откликаются)
+@ITjobs
+_
+Uzbekistan, @uzdev
+_jobs (~25к), @itcloz (cloz.uz), @UzITvacancy, @vakansiya
+_
+uzit
+(~22к), @itpark
+_
+uz, @texno
+_
+ish, @Job
+_
+HUB.
+Общеджобовые, где мелькают джуны: @ishkerakuz, @ishtop, @ish
+_
+boru.
+5. Комьюнити и стек-чаты — лучшее место для «ищем разработчика»
+Общие: @uzdevgroup, @uzgeeksgroup, @tasdev, @gdgtashkent + чат @gdgchat (Google Developer
+Group, живые митапы), @millionuzbekcoders.
+По стекам (проверить): @js
+_
+uzb, @python
+_
+uz, @php_
+uz, @laravel
+_
+uz, @Java
+_
+UZB, @golanguzb,
+@react
+_
+uz, @vuejs
+_
+uz, @nodejs
+_
+uz, @nestjs
+_
+uz, @Androidchilar, @iOSDevelopersUz, @dartuzb
+(Flutter), @devopsuzb.
+Полный реестр хэндлов — GitHub: doniyor2109/awesome-telegram-dev-groups-uz.
+
+--- PAGE 2 ---
+
+6. Фриланс — портфолио = открытое резюме
+Telegram: @freelance
+_
+uzb, @freelancer
+_
+uzbek.
+Сайты UZ: uzbekcoders.uz (прямо профили разработчиков), dowork.uz, giglancer.uz,
+hirelancer.uz.
+Международные: Upwork и Toptal — публичные резюме узбекских разработчиков (фильтр по
+Uzbekistan).
+7. Каталоги — чтобы копать дальше
+tgjob.uz — каталог и рейтинги TG-каналов вакансий Узбекистана.
+uz.tgstat.com/career — категория «Работа»
+, фильтр по IT.
+GitHub-списки: doniyor2109/awesome-telegram-dev-groups-uz,
+azamatnarzuloyev/uzbekistan-web-developer-resources.
+8. Буткемпы — свежие выпускники (пул джунов)
+Najot Ta'lim @najottalim (12к+ выпускников), PDP @pdpuz, Mohirdev @mohirdev, Astrum
+@astrumuz, School 21, IT Park University.
+У каждого закрытые чаты потоков и карьерные боты — заходить через их HR.
+9. Активный сорсинг (резюме нет, но люди открыты)
+LinkedIn — фильтр Uzbekistan + баннер #OpenToWork, группа «IT Community of Uzbekistan»
+.
+GitHub — рейтинги местных: starfolio.dev/users/country/uzbekistan (~970 разработчиков),
+committers.top/uzbekistan, gayanvoice/top-github-users. Профили «available for hire»
+.
+Куда бить первым: hh.uz и OLX (резюме) → Talent Park и IT Market (бесплатно, под IT) → @ITresume
+_
+Uzbekistan,
+@uzbdevelop, @UstozShogird (кандидаты сами кладут CV) → стек-чаты и школы под джунов. hh.uz, OLX, Talent Park, IT
+Market, tgjob.uz и школы подтверждены поиском; часть хэндлов стек-чатов — из каталогов, проверить перед рассылкой.

@@ -4,6 +4,9 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  schedule:
+    # Daily at 03:20 UTC (08:20 Uzbekistan time). The job publishes a new static snapshot.
+    - cron: '20 3 * * *'
 
 permissions:
   contents: read
@@ -26,6 +29,20 @@ jobs:
       - run: npm ci
       - run: npm run build -w packages/ui
       - run: npm run build -w apps/preview
+      - name: Crawl public candidate sources
+        continue-on-error: true
+        run: |
+          mkdir -p apps/preview/dist/data
+          npm run crawl -- \
+            --input tools/contact-crawler/sources.json \
+            --output apps/preview/dist/data/crawler-snapshot.json \
+            --depth 2 --pages 12 --listing-pages 2 --candidates 30 --timeout 10000 --delay 250
+      - name: Ensure a snapshot is always published
+        run: |
+          if [ ! -s apps/preview/dist/data/crawler-snapshot.json ]; then
+            mkdir -p apps/preview/dist/data
+            printf '%s\n' '{"schemaVersion":3,"generatedAt":"'"$(date -u +%FT%TZ)"'","candidates":[],"discoveryReports":[],"sourceReports":[],"error":"crawler-run-failed","policy":{"publicOnly":true,"llm":false}}' > apps/preview/dist/data/crawler-snapshot.json
+          fi
       - name: Add SPA fallback
         run: cp apps/preview/dist/index.html apps/preview/dist/404.html
       - uses: actions/configure-pages@v5
