@@ -31,12 +31,13 @@ jobs:
       - run: npm run build -w apps/preview
       - name: Crawl public candidate sources
         continue-on-error: true
+        timeout-minutes: 6
         run: |
           mkdir -p apps/preview/dist/data
           npm run crawl -- \
             --input tools/contact-crawler/sources.json \
             --output apps/preview/dist/data/crawler-snapshot.json \
-            --depth 2 --pages 12 --listing-pages 2 --candidates 30 --timeout 10000 --delay 250
+            --depth 2 --pages 6 --listing-pages 1 --candidates 8 --timeout 5000 --delay 150
       - name: Ensure a snapshot is always published
         run: |
           if [ ! -s apps/preview/dist/data/crawler-snapshot.json ]; then
