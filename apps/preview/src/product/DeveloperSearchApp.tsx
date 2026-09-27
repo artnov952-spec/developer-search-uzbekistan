@@ -1,9 +1,9 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { Avatar, AvatarFallback, Badge, Button, Input } from '@cloudplus/ui'
 import {
-  AlertCircle, ArrowLeft, BarChart3, Bookmark, Check, ChevronDown, CircleHelp,
+  AlertCircle, ArrowLeft, Bookmark, Check, ChevronDown, CircleHelp,
   ExternalLink, FolderPlus, LoaderCircle, MapPin, MessageSquare,
-  Search, Send, Settings, SlidersHorizontal, Trash2, Upload, UserRound, Users, X,
+  Search, Send, Settings, SlidersHorizontal, Trash2, Upload, UserRound, X,
 } from 'lucide-react'
 import { BrandLogo } from './BrandLogo'
 import './developer-search.css'
@@ -47,9 +47,9 @@ function currentRoute():Route { const path=location.pathname.startsWith(appBase)
 function RailButton({route,icon,count,onGo}:{route:Route;icon:React.ReactNode;count?:number;onGo:(route:Route)=>void}) {
   return <button className={`rail-button ${currentRoute()===route?'is-active':''}`} aria-label={routeLabels[route]} title={routeLabels[route]} onClick={()=>onGo(route)}>{icon}<span className="rail-label">{routeLabels[route]}</span>{Boolean(count)&&<span className="rail-count">{count}</span>}</button>
 }
-function AppRail({saved,messages,onGo}:{saved:number;messages:number;onGo:(r:Route)=>void}) {
+function AppRail({onGo}:{onGo:(r:Route)=>void}) {
   return <nav className="app-rail" aria-label="Основная навигация"><BrandLogo compact className="rail-logo"/><div className="rail-main">
-    <RailButton route="search" icon={<Search/>} onGo={onGo}/><RailButton route="people" icon={<Users/>} onGo={onGo}/><RailButton route="collections" icon={<Bookmark/>} count={saved} onGo={onGo}/><RailButton route="messages" icon={<MessageSquare/>} count={messages} onGo={onGo}/><RailButton route="analytics" icon={<BarChart3/>} onGo={onGo}/>
+    <RailButton route="search" icon={<Search/>} onGo={onGo}/>
   </div><div className="rail-bottom"><RailButton route="help" icon={<CircleHelp/>} onGo={onGo}/><button className="user-avatar" onClick={()=>onGo('settings')} aria-label="Настройки">АН<span/></button></div></nav>
 }
 function PageHeader({title,subtitle,action}:{title:string;subtitle:string;action?:React.ReactNode}) { return <header className="section-header"><div><BrandLogo className="mobile-brand"/><p>Разработка / {title}</p><h1>{title}</h1><span>{subtitle}</span></div>{action}</header> }
@@ -105,5 +105,5 @@ export function DeveloperSearchApp() {
   else if(route==='settings') content=<><PageHeader title="Настройки" subtitle="Профиль команды и параметры рабочего пространства"/><div className="settings-layout"><section className="content-card"><h2><UserRound/>Профиль</h2><label>Компания<Input value={settings.company} onChange={e=>setSettings(v=>({...v,company:e.target.value}))}/></label><label>Рекрутер<Input value={settings.recruiter} onChange={e=>setSettings(v=>({...v,recruiter:e.target.value}))}/></label><label>Город<Input value={settings.city} onChange={e=>setSettings(v=>({...v,city:e.target.value}))}/></label></section><section className="content-card"><h2><Settings/>Интерфейс</h2><label className="switch-row"><span>Уведомления<small>Сообщать о новых ответах</small></span><input type="checkbox" checked={settings.notifications} onChange={e=>setSettings(v=>({...v,notifications:e.target.checked}))}/></label><label className="switch-row"><span>Компактный режим<small>Уменьшить вертикальные отступы</small></span><input type="checkbox" checked={settings.compact} onChange={e=>setSettings(v=>({...v,compact:e.target.checked}))}/></label><Button variant="destructive" onClick={()=>{setImported([]);setSaved([]);setThreads([])}}><Trash2/>Очистить локальные данные</Button></section></div></>
   else content=<><PageHeader title="Помощь" subtitle="Как обновляются реальные профили"/><div className="help-steps"><section><b>1</b><div><h2>Автоматический обход</h2><p>GitHub Actions ежедневно запускает детерминированный краулер публичных источников без LLM.</p></div></section><section><b>2</b><div><h2>Публикация снимка</h2><p>Результат и статусы источников входят в очередную сборку сайта. «Обновить снимок» перечитывает опубликованный файл и не запускает новый обход.</p></div></section><section><b>3</b><div><h2>Ручной резерв</h2><code>npm run crawl -- --input tools/contact-crawler/sources.json --output result.json</code><p>Локальный JSON можно импортировать, если автоматический снимок временно недоступен.</p></div></section></div></>
 
-  return <div className={`talent-app product-shell ${settings.compact?'compact':''}`}><AppRail saved={saved.length} messages={threads.length} onGo={go}/><div className="app-column"><div className="global-search"><Search/><input aria-label="Быстрый поиск" value={query} onChange={e=>setQuery(e.target.value)} onFocus={()=>route!=='search'&&go('search')} placeholder="Быстрый поиск по имени, контакту или источнику"/><kbd>⌘ K</kbd><button className="top-user" onClick={()=>go('settings')} aria-label="Открыть настройки">АН</button></div><main className="product-main">{content}</main></div></div>
+  return <div className={`talent-app product-shell ${settings.compact?'compact':''}`}><AppRail onGo={go}/><div className="app-column"><div className="global-search"><Search/><input aria-label="Быстрый поиск" value={query} onChange={e=>setQuery(e.target.value)} onFocus={()=>route!=='search'&&go('search')} placeholder="Быстрый поиск по имени, контакту или источнику"/><kbd>⌘ K</kbd><button className="top-user" onClick={()=>go('settings')} aria-label="Открыть настройки">АН</button></div><main className="product-main">{content}</main></div></div>
 }
