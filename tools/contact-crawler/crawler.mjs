@@ -62,6 +62,7 @@ function isNextPage(adapter, link, pageUrl) {
   if(u.origin!==current.origin)return false
   if(/(?:rel\s*=\s*["']?next|aria-label\s*=\s*["'][^"']*(?:next|след|keyingi))/i.test(link.attrs))return true
   if(/^(?:next|следующая|далее|keyingi|›|»|→)$/i.test(link.text.trim()))return true
+  if(adapter.id==='telegram-resume')return u.pathname===current.pathname&&u.searchParams.has('before')
   if(adapter.id==='github')return u.pathname===current.pathname&&u.searchParams.has('p')
   return u.searchParams.has('page')||u.searchParams.has('p')
 }
