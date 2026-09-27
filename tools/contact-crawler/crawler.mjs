@@ -56,6 +56,7 @@ function isCandidateLink(adapter, link) {
   if(adapter.id==='community-school'||adapter.id==='public-web') return /(?:profile|member|student|alumni|mentor|speaker|author|portfolio|resume|cv|developer|specialist|talent)/i.test(`${p} ${link.text} ${link.attrs}`)
   return false
 }
+function candidateCrawlUrl(adapter,raw){if(adapter.id!=='telegram-resume')return raw;const u=new URL(raw),bits=u.pathname.split('/').filter(Boolean);if(bits[0]!=='s'&&bits.length===2&&/^\d+$/.test(bits[1]))u.pathname=`/s/${bits[0]}/${bits[1]}`;return u.href}
 function isNextPage(adapter, link, pageUrl) {
   const u=new URL(link.url), current=new URL(pageUrl)
   if(u.origin!==current.origin)return false
@@ -87,7 +88,7 @@ export async function discoverCandidateInputs(records, options={}) {
       const page=queue.shift();if(seen.has(page))continue;seen.add(page)
       const u=new URL(page);let allow=policies.get(u.origin);if(!allow){allow=await robotPolicy(u.origin,fetcher,userAgent,timeoutMs);policies.set(u.origin,allow)}if(!allow(u.pathname)){failures.push({url:page,reason:'robots-disallowed'});continue}
       try{const r=await fetcher(page,{headers:{'user-agent':userAgent,accept:'text/html,application/xhtml+xml'},redirect:'follow',signal:AbortSignal.timeout(timeoutMs)});if(!r.ok){failures.push({url:page,reason:reasonFor(r,'')});continue}const type=r.headers.get('content-type')||'';if(!type.includes('text/html')&&!type.includes('application/xhtml+xml')){failures.push({url:page,reason:'non-html'});continue}const html=await r.text(),blocked=reasonFor(r,html);if(blocked){failures.push({url:page,reason:blocked});continue}
-        for(const link of extractLinks(html,page)){if(isCandidateLink(adapter,link)&&!candidates.has(link.url))candidates.set(link.url,{url:link.url,name:nameFromListingLink(link),chain:[start,...(page===start?[]:[page]),link.url]});if(isNextPage(adapter,link,page)&&!seen.has(link.url)&&queue.length+seen.size<maxListingPages)queue.push(link.url)}
+        for(const link of extractLinks(html,page)){if(isCandidateLink(adapter,link)){const candidateUrl=candidateCrawlUrl(adapter,link.url);if(!candidates.has(candidateUrl))candidates.set(candidateUrl,{url:candidateUrl,name:nameFromListingLink(link),chain:[start,...(page===start?[]:[page]),candidateUrl]})};if(isNextPage(adapter,link,page)&&!seen.has(link.url)&&queue.length+seen.size<maxListingPages)queue.push(link.url)}
       }catch(e){failures.push({url:page,reason:e?.name==='TimeoutError'?'timeout':'network-error'})}
       if(delayMs)await sleep(delayMs)
     }
