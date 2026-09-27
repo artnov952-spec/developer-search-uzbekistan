@@ -161,4 +161,20 @@ button, input { font: inherit; }
   .talent-app { display: block; }.app-rail { position: fixed; inset: auto 0 0; z-index: 40; width: 100%; height: 60px; flex-direction: row; justify-content: center; padding: 8px 12px; border: 1px solid var(--line); }.rail-logo, .rail-bottom { display: none; }.rail-main { flex-direction: row; gap: 9px; }.rail-main .rail-button:nth-child(5) { display: none; }
   .search-workspace { padding: 18px 14px 76px; }.workspace-header { height: auto; margin-bottom: 18px; }.workspace-header h1 { font-size: 23px; }.workspace-path { display: none; }.candidate-row { grid-template-columns: 1fr auto; min-height: 112px; padding: 13px 8px; }.candidate-fit { grid-column: 1 / -1; padding-left: 62px; margin-top: -19px; }.candidate-compensation { width: 130px; }.candidate-compensation .source-link { display: none; }.filter-bar button { height: 36px; }.results-heading h2 { font-size: 15px; }.results-controls { gap: 4px; }.results-controls button { font-size: 0; }.results-controls button:first-child { font-size: 11px; }.results-heading button svg { width: 18px; }.profile-panel { padding: 22px; }.results-footer { padding-bottom: 6px; }
 }
-@media (max-width: 520px) { .candidate-row { grid-template-columns: 1fr; }.candidate-compensation { position: absolute; top: 14px; right: 7px; width: auto; height: auto; padding-right: 30px; }.candidate-compensation .source-link { display: none; }.candidate-fit { padding-left: 62px; padding-right: 0; }.candidate-fit > div:first-child { display: none; }.candidate-avatar { width: 48px!important; height: 48px!important; }.candidate-person { padding-right: 115px; }.results-footer > span { display: none; }.results-footer { justify-content: flex-end; } }
+@media (max-width: 520px) {
+  body, .talent-app { width: 100%; max-width: 100%; overflow-x: hidden; }
+  .candidate-row { grid-template-columns: minmax(0, 1fr); gap: 7px; }
+  .candidate-person { padding-right: 0; }
+  .candidate-compensation { position: relative; inset: auto; width: 100%; height: 26px; padding: 0 34px 0 62px; align-content: center; justify-items: start; }
+  .candidate-compensation strong { max-width: 100%; overflow: hidden; font-size: 12px; text-overflow: ellipsis; }
+  .candidate-compensation .save-button { top: 0; right: 0; }
+  .candidate-compensation .source-link { display: none; }
+  .candidate-fit { padding-left: 62px; padding-right: 0; margin-top: 0; }
+  .candidate-fit > div:first-child { display: none; }
+  .candidate-avatar { width: 48px!important; height: 48px!important; }
+  .results-heading { gap: 8px; }
+  .results-heading h2 { min-width: 0; }
+  .results-controls { flex: none; }
+  .results-footer > span { display: none; }
+  .results-footer { justify-content: flex-end; }
+}

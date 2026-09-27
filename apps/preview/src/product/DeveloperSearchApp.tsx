@@ -206,14 +206,15 @@ function ProfilePanel({ candidate, saved, invited, stage, onStageChange, onSave,
 }
 
 export function DeveloperSearchApp() {
-  const [query, setQuery] = useState('')
-  const [selectedId, setSelectedId] = useState(1)
-  const [saved, setSaved] = useState<number[]>([])
+  const initialView = new URLSearchParams(window.location.search).get('view')
+  const [query, setQuery] = useState(initialView === 'search' ? 'React' : '')
+  const [selectedId, setSelectedId] = useState(initialView === 'profile' ? 3 : 1)
+  const [saved, setSaved] = useState<number[]>(initialView === 'saved' ? [2, 4] : [])
   const [invited, setInvited] = useState<number[]>([])
-  const [appliedFilters, setAppliedFilters] = useState(activeFilters)
-  const [mobileProfile, setMobileProfile] = useState(false)
-  const [allFilters, setAllFilters] = useState(false)
-  const [savedOnly, setSavedOnly] = useState(false)
+  const [appliedFilters, setAppliedFilters] = useState(initialView === 'filters' ? ['React', 'Senior', 'Ташкент'] : activeFilters)
+  const [mobileProfile, setMobileProfile] = useState(initialView === 'profile' && window.innerWidth < 1120)
+  const [allFilters, setAllFilters] = useState(initialView === 'filters')
+  const [savedOnly, setSavedOnly] = useState(initialView === 'saved')
   const [sortBy, setSortBy] = useState<'match' | 'name'>('match')
   const [stages, setStages] = useState<Record<number, HiringStage>>({})
   const searchRef = useRef<HTMLInputElement>(null)
