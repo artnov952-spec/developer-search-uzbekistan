@@ -41,6 +41,17 @@ type Candidate = {
   contactType: 'Telegram' | 'Телефон' | 'Email' | 'Соцсеть'
 }
 
+// UI adapter target for tools/contact-crawler output. The static candidates below are
+// explicitly presentation fixtures; production must populate this shape from a crawl result.
+export type DiscoveredContact = {
+  type: 'email' | 'phone' | 'telegram' | 'social'
+  value: string
+  normalized: string
+  sourceUrl: string
+  discoveryChain: string[]
+  profileUrl?: string
+}
+
 const candidates: Candidate[] = [
   {
     id: 1, initials: 'АМ', name: 'Алишер Мирзаев', role: 'Frontend-разработчик', level: 'Senior', city: 'Ташкент', mode: 'Удаленно',
@@ -112,6 +123,7 @@ function CandidateRow({ candidate, selected, saved, onSelect, onSave }: {
           <div className="candidate-name-line"><strong>{candidate.name}</strong>{candidate.verified && <Verified />}</div>
           <div className="candidate-role">{candidate.role} · {candidate.level}</div>
           <div className="candidate-location"><MapPin size={12} /> {candidate.city} · {candidate.mode}</div>
+          <div className="contact-kind"><span>{candidate.contactType}</span>{candidate.contact}</div>
           <div className={`candidate-status ${candidate.statusTone}`}><span />{candidate.status}</div>
         </div>
       </div>
@@ -150,6 +162,7 @@ function ProfilePanel({ candidate, saved, invited, stage, onStageChange, onSave,
   return (
     <aside className="profile-panel">
       <div className="profile-kicker">Профиль разработчика</div>
+      <p className="fixture-notice">Демонстрационный профиль — не результат живого поиска</p>
       {onClose && <button className="profile-close" onClick={onClose} aria-label="Закрыть"><X /></button>}
       <Avatar className="profile-avatar" style={{ background: candidate.color }}>
         <AvatarFallback style={{ background: candidate.color }}>{candidate.initials}</AvatarFallback>

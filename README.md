@@ -17,6 +17,7 @@ packages/ui/            @cloudplus/ui — библиотека (публикуе
   scripts/gen-api.cjs   генератор справочника API из исходников
 apps/preview/           витрина в формате docs-сайта — документация библиотеки
 apps/design-lab/        макеты экранов CRM под дизайн-аудит (не часть библиотеки)
+tools/contact-crawler/  детерминированный CLI поиска публичных контактов кандидата
 API.md                  сгенерированный справочник пропсов — основной вход для агентов
 ```
 
@@ -29,6 +30,8 @@ npm run dev:preview            # витрина:  http://localhost:4180
 npm run dev:design-lab         # макеты:   http://localhost:4181
 npm run typecheck              # типы во всех трёх пакетах
 npm run build                  # собрать всё по цепочке
+npm test                       # локальные fixture-тесты краулера
+npm run crawl -- --help        # CLI краулера публичных контактов
 ```
 
 Приложения подключают библиотеку как обычную npm-зависимость (`@cloudplus/ui`, workspace-симлинк), поэтому перед

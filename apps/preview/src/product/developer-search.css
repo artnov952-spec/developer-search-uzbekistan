@@ -82,6 +82,8 @@ button, input { font: inherit; }
 .candidate-name-line { display: flex; align-items: center; gap: 5px; font-size: 14px; line-height: 1.25; }
 .verified { width: 16px; height: 16px; display: inline-grid; place-items: center; flex: none; border-radius: 50%; color: #fff; background: #2387eb; }
 .candidate-role, .candidate-location, .candidate-status { font-size: 11px; color: #5e655e; line-height: 1.4; }
+.contact-kind { display:flex; align-items:center; gap:5px; max-width:230px; overflow:hidden; color:#4f554f; font-size:10px; white-space:nowrap; text-overflow:ellipsis; }
+.contact-kind span { flex:none; border:1px solid #cdd5c8; border-radius:999px; padding:1px 5px; color:#34402f; background:#f5f8f2; font-weight:650; }
 .candidate-location { display: flex; align-items: center; gap: 2px; }
 .candidate-status { display: flex; align-items: center; gap: 5px; }
 .candidate-status > span { width: 7px; height: 7px; flex: none; border-radius: 50%; background: #49bf42; }
@@ -117,6 +119,7 @@ button, input { font: inherit; }
 .profile-title h2 { margin: 0; font-size: 21px; letter-spacing: -.04em; }
 .profile-role, .profile-location { margin: 1px 0; color: #515751; font-size: 12px; }
 .profile-panel > .candidate-status { margin-top: 3px; }
+.fixture-notice { margin:3px 0 12px; color:#777f76; font-size:10px; }
 .profile-metrics { display: grid; grid-template-columns: 1fr 1.25fr; margin-top: 18px; padding: 13px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
 .profile-metrics > div { display: flex; flex-direction: column; }.profile-metrics > div + div { padding-left: 20px; border-left: 1px solid var(--line); }
 .profile-metrics strong { font-size: 17px; }.profile-metrics small { margin-top: 2px; color: var(--muted); font-size: 10px; }
