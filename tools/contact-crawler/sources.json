@@ -1,6 +1,6 @@
 [
-  {"id":"hh-programmers","type":"source","name":"hh.uz — программисты","url":"https://tashkent.hh.uz/resumes/programmist"},
-  {"id":"hh-it","type":"source","name":"hh.uz — IT специалисты","url":"https://tashkent.hh.uz/resumes/it_specialist"},
+  {"id":"hh-programmers","type":"restricted","name":"hh.uz — программисты","url":"https://tashkent.hh.uz/resumes/programmist","reason":"candidate-contacts-are-hidden-or-paid; corporate-page-contacts-must-not-be-treated-as-candidate-contacts"},
+  {"id":"hh-it","type":"restricted","name":"hh.uz — IT специалисты","url":"https://tashkent.hh.uz/resumes/it_specialist","reason":"candidate-contacts-are-hidden-or-paid; corporate-page-contacts-must-not-be-treated-as-candidate-contacts"},
   {"id":"olx-work","type":"source","name":"OLX — Работа","url":"https://www.olx.uz/rabota/"},
   {"id":"it-market-specialists","type":"source","name":"IT Market — специалисты","url":"https://it-market.uz/specialists"},
   {"id":"telegram-itresume","type":"source","name":"IT Resume Uzbekistan","url":"https://t.me/s/ITresume_Uzbekistan"},
