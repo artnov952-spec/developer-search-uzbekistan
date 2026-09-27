@@ -35,7 +35,9 @@ function load<T>(key:string, fallback:T):T { try { const value=localStorage.getI
 function useStored<T>(key:string, fallback:T) { const [state,setState]=useState<T>(()=>load(key,fallback)); useEffect(()=>localStorage.setItem(key,JSON.stringify(state)),[key,state]); return [state,setState] as const }
 function initials(name:string) { return name.split(/\s+/).slice(0,2).map(v=>v[0]?.toUpperCase()).join('') || 'К' }
 function contactType(type:CrawlContact['type']):ContactType { return ({email:'Email',phone:'Телефон',telegram:'Telegram',social:'Соцсеть'} as const)[type] }
-function currentRoute():Route { const value=location.pathname.replace(/^\//,'').split('/')[0] as Route; return value in routeLabels ? value : 'search' }
+const appBase = import.meta.env.BASE_URL.replace(/\/$/, '')
+function routePath(route: Route): string { return `${appBase}/${route}` || `/${route}` }
+function currentRoute():Route { const path=location.pathname.startsWith(appBase) ? location.pathname.slice(appBase.length) : location.pathname; const value=path.replace(/^\//,'').split('/')[0] as Route; return value in routeLabels ? value : 'search' }
 
 function RailButton({route,icon,count,onGo}:{route:Route;icon:React.ReactNode;count?:number;onGo:(route:Route)=>void}) {
   return <button className={`rail-button ${currentRoute()===route?'is-active':''}`} aria-label={routeLabels[route]} title={routeLabels[route]} onClick={()=>onGo(route)}>{icon}{Boolean(count)&&<span className="rail-count">{count}</span>}</button>
@@ -65,7 +67,7 @@ export function DeveloperSearchApp() {
   const [importState,setImportState]=useState<'idle'|'loading'|'error'>('idle'); const [importError,setImportError]=useState('')
   const fileRef=useRef<HTMLInputElement>(null); const [activeThread,setActiveThread]=useState<string|null>(null); const [draft,setDraft]=useState('')
   const all=useMemo(()=>[...imported,...DEMO],[imported])
-  const go=(next:Route)=>{history.pushState({},'',`/${next}`);setRoute(next);setSelected(null);window.scrollTo(0,0)}
+  const go=(next:Route)=>{history.pushState({},'',routePath(next));setRoute(next);setSelected(null);window.scrollTo(0,0)}
   useEffect(()=>{const pop=()=>{setRoute(currentRoute());setSelected(null)};addEventListener('popstate',pop);return()=>removeEventListener('popstate',pop)},[])
   const toggleSave=(id:string)=>setSaved(v=>v.includes(id)?v.filter(x=>x!==id):[...v,id])
   useEffect(()=>setCollections(items=>items.map((c,i)=>i===0?{...c,candidateIds:saved}:c)),[saved,setCollections])
