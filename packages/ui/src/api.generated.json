@@ -1,0 +1,2464 @@
+{
+  "crm": [
+    {
+      "name": "AiButton",
+      "file": "src/components/AiButton.tsx",
+      "doc": "Кнопка запуска AI-действия: иконка искры, на время работы — спиннер.",
+      "generics": [],
+      "extends": [
+        "React.ButtonHTMLAttributes<HTMLButtonElement>"
+      ],
+      "props": [
+        {
+          "name": "loading",
+          "type": "boolean",
+          "required": false,
+          "doc": "Показать спиннер вместо искры и заблокировать кнопку."
+        },
+        {
+          "name": "size",
+          "type": "'compact' | 'default'",
+          "required": false,
+          "doc": "Габарит: `compact` — для панелей инструментов и строк таблицы.",
+          "default": "'default'"
+        }
+      ]
+    },
+    {
+      "name": "AppNav",
+      "file": "src/components/AppRail.tsx",
+      "doc": "Вторая колонка навигации справа от `AppRail` — список разделов текстом.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "`AppNavGroup` и `AppNavItem`."
+        },
+        {
+          "name": "header",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Шапка колонки: название раздела, поиск."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "AppNavCollapse",
+      "file": "src/components/AppRail.tsx",
+      "doc": "Кнопка сворачивания колонки `AppNav`, ставится в её низ.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Переключение состояния — состоянием управляет родитель."
+        },
+        {
+          "name": "collapsed",
+          "type": "boolean",
+          "required": false,
+          "doc": "Текущее состояние: разворачивает стрелку."
+        }
+      ]
+    },
+    {
+      "name": "AppNavGroup",
+      "file": "src/components/AppRail.tsx",
+      "doc": "Группа пунктов в `AppNav` с заголовком.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "doc": "Заголовок группы. Без него группа просто разделяет пункты отступом."
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Пункты `AppNavItem`."
+        },
+        {
+          "name": "action",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Кнопка в правом углу заголовка, например «добавить»."
+        }
+      ]
+    },
+    {
+      "name": "AppNavItem",
+      "file": "src/components/AppRail.tsx",
+      "doc": "Пункт `AppNav`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка слева от подписи."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "doc": "Подпись пункта."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "doc": "Текущий пункт — подсвечивается."
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "required": false,
+          "doc": "Счётчик справа: непрочитанные, количество записей."
+        },
+        {
+          "name": "depth",
+          "type": "number",
+          "required": false,
+          "doc": "Уровень вложенности: сдвигает пункт вправо.",
+          "default": "0"
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Обработчик выбора пункта."
+        }
+      ]
+    },
+    {
+      "name": "AppRail",
+      "file": "src/components/AppRail.tsx",
+      "doc": "Узкая тёмная полоса с иконками разделов — крайняя левая колонка CRM. Тёмная в обеих темах. Это НЕ `Sidebar` из shadcn: тот — полноценная оболочка приложения со сворачиванием.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Пункты `AppRailItem`."
+        },
+        {
+          "name": "top",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Логотип или аватар над списком пунктов."
+        },
+        {
+          "name": "bottom",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Прижатый к низу блок: настройки, профиль."
+        }
+      ]
+    },
+    {
+      "name": "AppRailItem",
+      "file": "src/components/AppRail.tsx",
+      "doc": "Пункт `AppRail`: только иконка, подпись показывается тултипом.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Иконка 20×20, обычно из lucide-react."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "doc": "Текущий раздел — подсвечивается."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "doc": "Подпись для тултипа и скринридера."
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Обработчик выбора раздела."
+        }
+      ]
+    },
+    {
+      "name": "AttachmentRow",
+      "file": "src/components/FileUpload.tsx",
+      "doc": "Строка прикреплённого файла под полем ввода или в карточке записи.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "doc": "Имя файла с расширением."
+        },
+        {
+          "name": "size",
+          "type": "string",
+          "required": false,
+          "doc": "Размер строкой, уже отформатированный: «2,4 МБ»."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка типа файла. По умолчанию — по расширению."
+        },
+        {
+          "name": "onRemove",
+          "type": "() => void",
+          "required": false,
+          "doc": "Показывает крестик удаления. Без обработчика крестика нет."
+        }
+      ]
+    },
+    {
+      "name": "BarChart",
+      "file": "src/components/BarChart.tsx",
+      "doc": "Лёгкий SVG-график без внешних зависимостей. Когда нужны оси, легенда и тултипы — берите `ChartContainer` из shadcn (он на Recharts).",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "data",
+          "type": "BarChartDatum[]",
+          "required": true,
+          "doc": "Набор столбцов."
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "doc": "Высота области графика в пикселях.",
+          "default": "160"
+        },
+        {
+          "name": "formatValue",
+          "type": "(value: number) => string",
+          "required": false,
+          "doc": "Форматирование подписи значения: суммы, проценты."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "CalendarView",
+      "file": "src/components/CalendarView.tsx",
+      "doc": "Месячная сетка с событиями. Для выбора даты в поле используйте `DatePicker`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "initialMonth",
+          "type": "Date",
+          "required": true,
+          "doc": "Месяц, открытый при первом рендере. Дальше месяц переключается внутри."
+        },
+        {
+          "name": "events",
+          "type": "CalendarEvent[]",
+          "required": true,
+          "doc": "События всех месяцев — компонент сам отбирает нужные."
+        },
+        {
+          "name": "onSelectDay",
+          "type": "(date: Date) => void",
+          "required": false,
+          "doc": "Клик по пустому месту в ячейке дня."
+        },
+        {
+          "name": "onEventClick",
+          "type": "(id: string) => void",
+          "required": false,
+          "doc": "Клик по конкретному событию."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "ChatMessage",
+      "file": "src/components/Chat.tsx",
+      "doc": "Сообщение в переписке.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "author",
+          "type": "string",
+          "required": true,
+          "doc": "Имя отправителя. Первые буквы идут в аватар-заглушку."
+        },
+        {
+          "name": "text",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Тело сообщения. Можно передать разметку."
+        },
+        {
+          "name": "time",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Время строкой: «14:32»."
+        },
+        {
+          "name": "own",
+          "type": "boolean",
+          "required": false,
+          "doc": "Сообщение текущего пользователя — прижимается вправо."
+        },
+        {
+          "name": "avatarSrc",
+          "type": "string",
+          "required": false,
+          "doc": "URL аватара. Без него — инициалы."
+        },
+        {
+          "name": "channel",
+          "type": "'internal' | 'telegram'",
+          "required": false,
+          "doc": "Канал: помечает сообщения, пришедшие из Telegram."
+        }
+      ]
+    },
+    {
+      "name": "ChatThread",
+      "file": "src/components/Chat.tsx",
+      "doc": "Оболочка переписки: прокручиваемый список сообщений между шапкой и полем ввода.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Сообщения `ChatMessage`."
+        },
+        {
+          "name": "header",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Шапка: собеседник, статус, действия."
+        },
+        {
+          "name": "footer",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Обычно `MessageComposer`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "ChecklistProgress",
+      "file": "src/components/ChecklistProgress.tsx",
+      "doc": "Прогресс заполнения карточки: процент плюс список незакрытых пунктов.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "items",
+          "type": "ChecklistItem[]",
+          "required": true,
+          "doc": "Пункты. Процент считается как доля `done`."
+        },
+        {
+          "name": "title",
+          "type": "string",
+          "required": false,
+          "doc": "Заголовок над полосой прогресса.",
+          "default": "'Заполнено'"
+        },
+        {
+          "name": "onJump",
+          "type": "(index: number) => void",
+          "required": false,
+          "doc": "Клик по пункту — обычно скроллит к соответствующему полю. Индекс — позиция в `items`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "Combobox",
+      "file": "src/components/Combobox.tsx",
+      "doc": "Выпадающий список с поиском. В отличие от `Select`, ищет по подстроке. Штатный рецепт shadcn: Popover + Command. Фильтрация, подсветка активного пункта и клавиатура приходят от cmdk — руками они больше не реализуются.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "options",
+          "type": "ComboboxOption[]",
+          "required": true,
+          "doc": "Варианты выбора."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "doc": "Выбранное значение."
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string) => void",
+          "required": false,
+          "doc": "Выбор варианта."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Текст в кнопке, пока ничего не выбрано.",
+          "default": "'Выберите…'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле."
+        }
+      ]
+    },
+    {
+      "name": "DataGrid",
+      "file": "src/components/DataGrid.tsx",
+      "doc": "Таблица с сортировкой, выбором строк и липкой шапкой. Сортировка и выбор — контролируемые: компонент только сообщает о намерении, менять данные должен родитель. Разметка — shadcn Table.",
+      "generics": [
+        "T"
+      ],
+      "extends": [],
+      "props": [
+        {
+          "name": "columns",
+          "type": "DataGridColumn<T>[]",
+          "required": true,
+          "doc": "Описание колонок."
+        },
+        {
+          "name": "rows",
+          "type": "T[]",
+          "required": true,
+          "doc": "Строки. Компонент их НЕ сортирует — сортируйте до передачи."
+        },
+        {
+          "name": "getRowId",
+          "type": "(row: T) => string",
+          "required": true,
+          "doc": "Стабильный идентификатор строки: ключ React и значение для выбора."
+        },
+        {
+          "name": "selectable",
+          "type": "boolean",
+          "required": false,
+          "doc": "Показать колонку чекбоксов.",
+          "default": "false"
+        },
+        {
+          "name": "selectedIds",
+          "type": "string[]",
+          "required": false,
+          "doc": "Идентификаторы выбранных строк.",
+          "default": "[]"
+        },
+        {
+          "name": "onSelectionChange",
+          "type": "(ids: string[]) => void",
+          "required": false,
+          "doc": "Новый набор выбранных строк."
+        },
+        {
+          "name": "sort",
+          "type": "SortState",
+          "required": false,
+          "doc": "Текущая сортировка — рисует стрелку в шапке."
+        },
+        {
+          "name": "onSortChange",
+          "type": "(sort: SortState) => void",
+          "required": false,
+          "doc": "Клик по сортируемой шапке. Пересортировать `rows` должен родитель."
+        },
+        {
+          "name": "state",
+          "type": "'idle' | 'loading' | 'empty' | 'error'",
+          "required": false,
+          "doc": "Состояние таблицы: скелетон, пусто, ошибка.",
+          "default": "'idle'"
+        },
+        {
+          "name": "emptyContent",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Что показать при `state=\"empty\"`."
+        },
+        {
+          "name": "errorContent",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Что показать при `state=\"error\"`."
+        },
+        {
+          "name": "onRowClick",
+          "type": "(row: T) => void",
+          "required": false,
+          "doc": "Клик по строке. Клик по чекбоксу сюда не попадает."
+        },
+        {
+          "name": "stickyHeader",
+          "type": "boolean",
+          "required": false,
+          "doc": "Прибить шапку при прокрутке.",
+          "default": "true"
+        }
+      ]
+    },
+    {
+      "name": "DatePicker",
+      "file": "src/components/DatePicker.tsx",
+      "doc": "Поле выбора даты: кнопка с датой плюс shadcn Calendar в поповере.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "Date | null",
+          "required": false,
+          "doc": "Выбранная дата. `null` — не выбрана."
+        },
+        {
+          "name": "onChange",
+          "type": "(date: Date | null) => void",
+          "required": false,
+          "doc": "Выбор даты или её очистка."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Текст, пока дата не выбрана.",
+          "default": "'Выберите дату'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле."
+        }
+      ]
+    },
+    {
+      "name": "DateRangePicker",
+      "file": "src/components/DateRangePicker.tsx",
+      "doc": "Поле выбора периода: два месяца в поповере, подсветка диапазона при наведении. Внутри — shadcn Calendar в режиме range; react-day-picker оперирует парой `{ from, to }`, поэтому на границе она переводится в `{ start, end }` кита.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "DateRange",
+          "required": false,
+          "doc": "Выбранный период."
+        },
+        {
+          "name": "onChange",
+          "type": "(value: DateRange) => void",
+          "required": false,
+          "doc": "Изменение периода. Срабатывает и после выбора первой границы."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Текст, пока период не выбран.",
+          "default": "'Период'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле."
+        }
+      ]
+    },
+    {
+      "name": "DonutChart",
+      "file": "src/components/DonutChart.tsx",
+      "doc": "Кольцевая диаграмма на SVG, без внешних зависимостей.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "data",
+          "type": "DonutChartDatum[]",
+          "required": true,
+          "doc": "Сегменты."
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "doc": "Внешний диаметр в пикселях.",
+          "default": "140"
+        },
+        {
+          "name": "thickness",
+          "type": "number",
+          "required": false,
+          "doc": "Толщина кольца в пикселях.",
+          "default": "16"
+        },
+        {
+          "name": "centerLabel",
+          "type": "string",
+          "required": false,
+          "doc": "Мелкая подпись в центре кольца."
+        },
+        {
+          "name": "centerValue",
+          "type": "string",
+          "required": false,
+          "doc": "Крупное значение в центре кольца."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "EmojiPicker",
+      "file": "src/components/EmojiPicker.tsx",
+      "doc": "Панель выбора эмодзи для поля сообщения.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "onSelect",
+          "type": "(emoji: string) => void",
+          "required": true,
+          "doc": "Выбор эмодзи — приходит сам символ."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "Fab",
+      "file": "src/components/Fab.tsx",
+      "doc": "Круглая кнопка основного действия, плавающая над содержимым.",
+      "generics": [],
+      "extends": [
+        "React.ButtonHTMLAttributes<HTMLButtonElement>"
+      ],
+      "props": [
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Иконка внутри кнопки."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "doc": "Подпись: разворачивает кнопку в «таблетку». Без неё — круг."
+        },
+        {
+          "name": "variant",
+          "type": "'accent' | 'neutral'",
+          "required": false,
+          "doc": "Цвет: акцентный или нейтральный.",
+          "default": "'accent'"
+        }
+      ]
+    },
+    {
+      "name": "FileCard",
+      "file": "src/components/FileGrid.tsx",
+      "doc": "Плитка файла в `FileGrid`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "doc": "Имя файла."
+        },
+        {
+          "name": "kind",
+          "type": "FileKind",
+          "required": false,
+          "doc": "Тип файла — определяет иконку.",
+          "default": "'file'"
+        },
+        {
+          "name": "meta",
+          "type": "string",
+          "required": false,
+          "doc": "Строка под именем: размер, дата."
+        },
+        {
+          "name": "thumbnailSrc",
+          "type": "string",
+          "required": false,
+          "doc": "Превью изображения вместо иконки."
+        },
+        {
+          "name": "onOpen",
+          "type": "() => void",
+          "required": false,
+          "doc": "Клик или двойной клик по плитке."
+        },
+        {
+          "name": "onMenu",
+          "type": "() => void",
+          "required": false,
+          "doc": "Кнопка «ещё» в углу. Без обработчика кнопки нет."
+        }
+      ]
+    },
+    {
+      "name": "FileGrid",
+      "file": "src/components/FileGrid.tsx",
+      "doc": "Сетка файлов, подстраивающаяся под ширину.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Плитки `FileCard`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "FileUpload",
+      "file": "src/components/FileUpload.tsx",
+      "doc": "Зона загрузки: клик или перетаскивание файлов.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "onFiles",
+          "type": "(files: File[]) => void",
+          "required": false,
+          "doc": "Выбранные файлы. Загрузку выполняет родитель."
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка про форматы и размер.",
+          "default": "'PNG, PDF, DOCX до 20 МБ'"
+        },
+        {
+          "name": "accept",
+          "type": "string",
+          "required": false,
+          "doc": "Фильтр в диалоге выбора, как у `<input type=\"file\">`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "FilterChip",
+      "file": "src/components/Toolbar.tsx",
+      "doc": "Фишка активного фильтра в `Toolbar`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "doc": "Название фильтра: «Стадия»."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "doc": "Выбранное значение: «В работе». Показывается после названия."
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "doc": "Фильтр применён — фишка подсвечена."
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Клик по фишке: обычно открывает выбор значения."
+        },
+        {
+          "name": "onClear",
+          "type": "() => void",
+          "required": false,
+          "doc": "Показывает крестик сброса. Без обработчика крестика нет."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка слева от названия."
+        }
+      ]
+    },
+    {
+      "name": "InlineEdit",
+      "file": "src/components/InlineEdit.tsx",
+      "doc": "Текст, который превращается в поле по клику. Enter сохраняет, Escape отменяет.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "doc": "Текущее значение."
+        },
+        {
+          "name": "onSave",
+          "type": "(value: string) => void",
+          "required": true,
+          "doc": "Подтверждение изменения. При отмене не вызывается."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Что показать вместо пустого значения.",
+          "default": "'Пусто'"
+        },
+        {
+          "name": "multiline",
+          "type": "boolean",
+          "required": false,
+          "doc": "Многострочное поле вместо однострочного.",
+          "default": "false"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "InsightCard",
+      "file": "src/components/InsightCard.tsx",
+      "doc": "Карточка подсказки или наблюдения — обычно результат работы AI.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Заголовок карточки."
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Тело подсказки."
+        },
+        {
+          "name": "actions",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Кнопки в подвале: «применить», «скрыть»."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка слева от заголовка."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "KanbanBoard",
+      "file": "src/components/KanbanBoard.tsx",
+      "doc": "Доска с колонками и перетаскиванием карточек. Карточки хранит родитель — компонент только сообщает о перемещении.",
+      "generics": [
+        "T"
+      ],
+      "extends": [],
+      "props": [
+        {
+          "name": "columns",
+          "type": "KanbanColumn[]",
+          "required": true,
+          "doc": "Колонки слева направо."
+        },
+        {
+          "name": "cards",
+          "type": "T[]",
+          "required": true,
+          "doc": "Все карточки одним списком; по колонкам их разносит `getColumnId`."
+        },
+        {
+          "name": "getCardId",
+          "type": "(c: T) => string",
+          "required": true,
+          "doc": "Стабильный идентификатор карточки."
+        },
+        {
+          "name": "getColumnId",
+          "type": "(c: T) => string",
+          "required": true,
+          "doc": "В какой колонке находится карточка."
+        },
+        {
+          "name": "renderCard",
+          "type": "(c: T) => React.ReactNode",
+          "required": true,
+          "doc": "Как отрисовать карточку. Обычно `KanbanCard` внутри."
+        },
+        {
+          "name": "onCardMove",
+          "type": "(cardId: string, toColumnId: string, toIndex: number) => void",
+          "required": false,
+          "doc": "Карточку перетащили. Переставить её в данных должен родитель."
+        },
+        {
+          "name": "onAddCard",
+          "type": "(columnId: string) => void",
+          "required": false,
+          "doc": "Кнопка «добавить» в шапке колонки. Без обработчика кнопки нет."
+        }
+      ]
+    },
+    {
+      "name": "KanbanCard",
+      "file": "src/components/KanbanBoard.tsx",
+      "doc": "Готовая карточка для `renderCard`: рамка, отступы, курсор перетаскивания.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Содержимое карточки."
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Клик по карточке — открыть запись."
+        }
+      ]
+    },
+    {
+      "name": "Leaderboard",
+      "file": "src/components/Leaderboard.tsx",
+      "doc": "Рейтинг участников. Порядок берётся как есть — сортируйте до передачи.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "items",
+          "type": "LeaderboardEntry[]",
+          "required": true,
+          "doc": "Участники в нужном порядке."
+        },
+        {
+          "name": "valueLabel",
+          "type": "string",
+          "required": false,
+          "doc": "Подпись единицы измерения справа от значения."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "MailList",
+      "file": "src/components/Mail.tsx",
+      "doc": "Список писем — оболочка для `MailRow`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Строки `MailRow`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "MailRow",
+      "file": "src/components/Mail.tsx",
+      "doc": "Строка письма в списке.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "from",
+          "type": "string",
+          "required": true,
+          "doc": "Отправитель."
+        },
+        {
+          "name": "subject",
+          "type": "string",
+          "required": true,
+          "doc": "Тема письма."
+        },
+        {
+          "name": "preview",
+          "type": "string",
+          "required": false,
+          "doc": "Начало текста письма — показывается после темы серым."
+        },
+        {
+          "name": "time",
+          "type": "string",
+          "required": false,
+          "doc": "Время или дата строкой."
+        },
+        {
+          "name": "unread",
+          "type": "boolean",
+          "required": false,
+          "doc": "Непрочитанное — выделяется жирным."
+        },
+        {
+          "name": "starred",
+          "type": "boolean",
+          "required": false,
+          "doc": "Отмечено звездой."
+        },
+        {
+          "name": "hasAttachment",
+          "type": "boolean",
+          "required": false,
+          "doc": "Показать скрепку."
+        },
+        {
+          "name": "avatarSrc",
+          "type": "string",
+          "required": false,
+          "doc": "URL аватара отправителя."
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Открыть письмо."
+        },
+        {
+          "name": "onStar",
+          "type": "() => void",
+          "required": false,
+          "doc": "Переключение звезды. Клик не всплывает в `onClick`."
+        }
+      ]
+    },
+    {
+      "name": "MessageComposer",
+      "file": "src/components/Chat.tsx",
+      "doc": "Поле написания сообщения с кнопкой отправки. Enter отправляет, Shift+Enter переносит строку.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "doc": "Контролируемое значение. Без него компонент хранит текст сам."
+        },
+        {
+          "name": "onChange",
+          "type": "(v: string) => void",
+          "required": false,
+          "doc": "Изменение текста — нужен только в контролируемом режиме."
+        },
+        {
+          "name": "onSend",
+          "type": "(text: string) => void",
+          "required": false,
+          "doc": "Отправка: по кнопке или Enter. Поле очищается само."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка в пустом поле.",
+          "default": "'Написать сообщение…'"
+        }
+      ]
+    },
+    {
+      "name": "MoneyInput",
+      "file": "src/components/MoneyInput.tsx",
+      "doc": "Поле суммы: разряды расставляются на лету, валюта выбирается рядом.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "number | string",
+          "required": false,
+          "doc": "Текущее значение. Строка — уже отформатированная сумма."
+        },
+        {
+          "name": "onChange",
+          "type": "(value: string) => void",
+          "required": true,
+          "doc": "Изменение суммы. Приходит строка без разделителей разрядов."
+        },
+        {
+          "name": "currency",
+          "type": "string",
+          "required": false,
+          "doc": "Выбранная валюта.",
+          "default": "'UZS'"
+        },
+        {
+          "name": "currencies",
+          "type": "string[]",
+          "required": false,
+          "doc": "Список валют в выпадающем меню.",
+          "default": "['UZS', 'USD', 'RUB']"
+        },
+        {
+          "name": "onCurrencyChange",
+          "type": "(currency: string) => void",
+          "required": false,
+          "doc": "Смена валюты. Без обработчика меню валют не показывается."
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка в пустом поле.",
+          "default": "'0'"
+        }
+      ]
+    },
+    {
+      "name": "MultiSelect",
+      "file": "src/components/MultiSelect.tsx",
+      "doc": "Выбор нескольких значений с поиском. Собран из Popover + Command, как рекомендует shadcn: фильтрация и клавиатура приходят от cmdk.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "options",
+          "type": "MultiSelectOption[]",
+          "required": true,
+          "doc": "Варианты выбора."
+        },
+        {
+          "name": "value",
+          "type": "string[]",
+          "required": true,
+          "doc": "Выбранные значения."
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string[]) => void",
+          "required": true,
+          "doc": "Новый набор выбранных значений."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Текст в кнопке, пока ничего не выбрано.",
+          "default": "'Выберите…'"
+        },
+        {
+          "name": "searchPlaceholder",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка в поле поиска.",
+          "default": "'Поиск…'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле.",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "NextStepCard",
+      "file": "src/components/NextStepCard.tsx",
+      "doc": "Карточка следующего шага по сделке: что и когда сделать.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Заголовок шага."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка слева от заголовка."
+        },
+        {
+          "name": "rows",
+          "type": "{ label: string; value: React.ReactNode }[]",
+          "required": true,
+          "doc": "Пары «подпись — значение»: срок, ответственный, канал."
+        },
+        {
+          "name": "action",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Кнопка действия в подвале."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "NotificationItem",
+      "file": "src/components/Notification.tsx",
+      "doc": "Уведомление в списке.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Заголовок уведомления."
+        },
+        {
+          "name": "description",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Подробности под заголовком."
+        },
+        {
+          "name": "time",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Когда пришло: «5 мин назад»."
+        },
+        {
+          "name": "unread",
+          "type": "boolean",
+          "required": false,
+          "doc": "Непрочитанное — точка слева и выделенный фон."
+        },
+        {
+          "name": "variant",
+          "type": "NotificationVariant",
+          "required": false,
+          "doc": "Смысловой цвет: информация, успех, предупреждение, ошибка.",
+          "default": "'info'"
+        },
+        {
+          "name": "avatarSrc",
+          "type": "string",
+          "required": false,
+          "doc": "Аватар инициатора вместо иконки."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Своя иконка. По умолчанию — по `variant`."
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Переход к объекту уведомления."
+        }
+      ]
+    },
+    {
+      "name": "NotificationList",
+      "file": "src/components/Notification.tsx",
+      "doc": "Список уведомлений — оболочка для `NotificationItem`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Элементы `NotificationItem`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "OrgChart",
+      "file": "src/components/OrgChart.tsx",
+      "doc": "Дерево оргструктуры сверху вниз.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "root",
+          "type": "OrgNode",
+          "required": true,
+          "doc": "Корневой узел."
+        },
+        {
+          "name": "onNodeClick",
+          "type": "(id: string) => void",
+          "required": false,
+          "doc": "Клик по карточке сотрудника."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "OverflowMenu",
+      "file": "src/components/OverflowMenu.tsx",
+      "doc": "Кнопка «⋯» с меню действий, которые не поместились в панель.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "items",
+          "type": "OverflowItem[]",
+          "required": true,
+          "doc": "Пункты меню."
+        },
+        {
+          "name": "label",
+          "type": "string",
+          "required": false,
+          "doc": "Подпись кнопки для скринридера.",
+          "default": "'Ещё'"
+        },
+        {
+          "name": "size",
+          "type": "'sm' | 'default'",
+          "required": false,
+          "doc": "Габарит кнопки.",
+          "default": "'sm'"
+        }
+      ]
+    },
+    {
+      "name": "PageHeader",
+      "file": "src/components/PageHeader.tsx",
+      "doc": "Шапка страницы: заголовок, статусы и действия в одной строке.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "leading",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Слева от заголовка: кнопка «назад», аватар, иконка."
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Заголовок страницы."
+        },
+        {
+          "name": "subtitle",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Пояснение под заголовком."
+        },
+        {
+          "name": "badges",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Статусы рядом с заголовком."
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Кнопки действий справа."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "PasswordInput",
+      "file": "src/components/PasswordInput.tsx",
+      "doc": "Поле пароля с переключателем видимости. Обёртка над shadcn Input.",
+      "generics": [],
+      "extends": [
+        "Omit<React.ComponentProps<'input'>, 'type'>"
+      ],
+      "props": []
+    },
+    {
+      "name": "PermissionMatrix",
+      "file": "src/components/PermissionMatrix.tsx",
+      "doc": "Матрица «право × роль» с чекбоксами на пересечениях.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "roles",
+          "type": "string[]",
+          "required": true,
+          "doc": "Роли — колонки матрицы."
+        },
+        {
+          "name": "permissions",
+          "type": "{ key: string; label: string; group?: string }[]",
+          "required": true,
+          "doc": "Права — строки. `group` объединяет строки в секции."
+        },
+        {
+          "name": "enabled",
+          "type": "Set<string>",
+          "required": true,
+          "doc": "Включённые пересечения. Ключ — `\"<permKey>:<role>\"`."
+        },
+        {
+          "name": "onToggle",
+          "type": "(permKey: string, role: string) => void",
+          "required": false,
+          "doc": "Переключение чекбокса. Менять множество должен родитель."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "PermissionRow",
+      "file": "src/components/PermissionRow.tsx",
+      "doc": "Строка участника с выбором роли — для страницы доступа к объекту.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "name",
+          "type": "string",
+          "required": true,
+          "doc": "Имя участника."
+        },
+        {
+          "name": "email",
+          "type": "string",
+          "required": true,
+          "doc": "Почта под именем."
+        },
+        {
+          "name": "avatarSrc",
+          "type": "string",
+          "required": false,
+          "doc": "URL аватара. Без него — инициалы."
+        },
+        {
+          "name": "role",
+          "type": "string",
+          "required": true,
+          "doc": "Текущая роль."
+        },
+        {
+          "name": "roleOptions",
+          "type": "string[]",
+          "required": false,
+          "doc": "Доступные роли в выпадающем списке."
+        },
+        {
+          "name": "onRoleChange",
+          "type": "(role: string) => void",
+          "required": false,
+          "doc": "Смена роли."
+        },
+        {
+          "name": "isOwner",
+          "type": "boolean",
+          "required": false,
+          "doc": "Владелец: роль не меняется и не удаляется."
+        },
+        {
+          "name": "onRemove",
+          "type": "() => void",
+          "required": false,
+          "doc": "Убрать участника. Без обработчика кнопки нет."
+        }
+      ]
+    },
+    {
+      "name": "PhoneInput",
+      "file": "src/components/PhoneInput.tsx",
+      "doc": "Поле телефона с выбором страны и маской под её формат.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "doc": "Номер без кода страны."
+        },
+        {
+          "name": "onChange",
+          "type": "(value: string) => void",
+          "required": true,
+          "doc": "Изменение номера."
+        },
+        {
+          "name": "defaultCountry",
+          "type": "string",
+          "required": false,
+          "doc": "Код страны по ISO: `UZ`, `RU`, `KZ`.",
+          "default": "'UZ'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка формата.",
+          "default": "'90 123 45 67'"
+        }
+      ]
+    },
+    {
+      "name": "Rating",
+      "file": "src/components/Rating.tsx",
+      "doc": "Оценка звёздами. Без `onChange` — только показ.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "number",
+          "required": true,
+          "doc": "Текущая оценка. Дробные значения дают половину звезды."
+        },
+        {
+          "name": "max",
+          "type": "number",
+          "required": false,
+          "doc": "Количество звёзд.",
+          "default": "5"
+        },
+        {
+          "name": "onChange",
+          "type": "(value: number) => void",
+          "required": false,
+          "doc": "Выбор оценки кликом."
+        },
+        {
+          "name": "readOnly",
+          "type": "boolean",
+          "required": false,
+          "doc": "Запретить изменение, оставив вид как есть."
+        },
+        {
+          "name": "size",
+          "type": "number",
+          "required": false,
+          "doc": "Размер звезды в пикселях.",
+          "default": "18"
+        }
+      ]
+    },
+    {
+      "name": "RichEditor",
+      "file": "src/components/RichEditor.tsx",
+      "doc": "Редактор форматированного текста с панелью инструментов.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "defaultValue",
+          "type": "string",
+          "required": false,
+          "doc": "Начальный HTML. Компонент неконтролируемый.",
+          "default": "''"
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка в пустом редакторе.",
+          "default": "'Напишите текст…'"
+        },
+        {
+          "name": "onChange",
+          "type": "(html: string) => void",
+          "required": false,
+          "doc": "Изменение текста — приходит HTML."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "SavedViews",
+      "file": "src/components/SavedViews.tsx",
+      "doc": "Вкладки сохранённых фильтров над списком: «Мои», «Просроченные».",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "views",
+          "type": "SavedView[]",
+          "required": true,
+          "doc": "Представления слева направо."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "doc": "Ключ активного представления."
+        },
+        {
+          "name": "onChange",
+          "type": "(key: string) => void",
+          "required": false,
+          "doc": "Переключение представления."
+        },
+        {
+          "name": "onAdd",
+          "type": "() => void",
+          "required": false,
+          "doc": "Кнопка «+» в конце. Без обработчика кнопки нет."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "SearchInput",
+      "file": "src/components/SearchInput.tsx",
+      "doc": "Поле поиска: иконка слева, кнопка очистки справа. Обёртка над shadcn Input.",
+      "generics": [],
+      "extends": [
+        "React.ComponentProps<'input'>"
+      ],
+      "props": [
+        {
+          "name": "onClear",
+          "type": "() => void",
+          "required": false,
+          "doc": "Показывает кнопку очистки, когда поле не пустое. Без обработчика кнопки нет."
+        }
+      ]
+    },
+    {
+      "name": "SegmentedControl",
+      "file": "src/components/SegmentedControl.tsx",
+      "doc": "Переключатель из нескольких слитых кнопок — для 2–4 взаимоисключающих режимов. Поверх shadcn ToggleGroup: клавиатурная модель (стрелки, Home/End) и roving tabindex приходят от Radix, руками они больше не реализуются.",
+      "generics": [],
+      "extends": [
+        "Omit<React.HTMLAttributes<HTMLDivElement>, 'onChange' | 'defaultValue' | 'dir'>"
+      ],
+      "props": [
+        {
+          "name": "options",
+          "type": "SegmentOption[]",
+          "required": true,
+          "doc": "Сегменты слева направо."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": true,
+          "doc": "Выбранное значение."
+        },
+        {
+          "name": "onValueChange",
+          "type": "(value: string) => void",
+          "required": true,
+          "doc": "Смена сегмента."
+        },
+        {
+          "name": "size",
+          "type": "SegmentedControlSize",
+          "required": false,
+          "doc": "Габарит переключателя.",
+          "default": "'default'"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать все сегменты.",
+          "default": "false"
+        }
+      ]
+    },
+    {
+      "name": "Softphone",
+      "file": "src/components/Softphone.tsx",
+      "doc": "Панель звонка: номеронабиратель и управление вызовом.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "onCall",
+          "type": "(number: string) => void",
+          "required": false,
+          "doc": "Начало звонка — приходит набранный номер."
+        },
+        {
+          "name": "onHangup",
+          "type": "() => void",
+          "required": false,
+          "doc": "Завершение звонка."
+        },
+        {
+          "name": "status",
+          "type": "'idle' | 'calling' | 'in-call'",
+          "required": false,
+          "doc": "Состояние линии: определяет, какие кнопки показаны.",
+          "default": "'idle'"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "Sparkline",
+      "file": "src/components/Sparkline.tsx",
+      "doc": "Микрографик тренда внутри строки или карточки. Без осей и подписей.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "data",
+          "type": "number[]",
+          "required": true,
+          "doc": "Значения по порядку. Масштаб — по минимуму и максимуму набора."
+        },
+        {
+          "name": "width",
+          "type": "number",
+          "required": false,
+          "doc": "Ширина в пикселях.",
+          "default": "80"
+        },
+        {
+          "name": "height",
+          "type": "number",
+          "required": false,
+          "doc": "Высота в пикселях.",
+          "default": "24"
+        },
+        {
+          "name": "variant",
+          "type": "SparklineVariant",
+          "required": false,
+          "doc": "Цвет линии: акцент или смысловой цвет.",
+          "default": "'accent'"
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "SpeedDial",
+      "file": "src/components/SpeedDial.tsx",
+      "doc": "Плавающая кнопка, раскрывающаяся в набор действий.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "actions",
+          "type": "SpeedDialAction[]",
+          "required": true,
+          "doc": "Действия снизу вверх."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка свёрнутой кнопки."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "StatCard",
+      "file": "src/components/StatCard.tsx",
+      "doc": "Карточка показателя: значение, динамика и подпись.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "label",
+          "type": "string",
+          "required": true,
+          "doc": "Название показателя."
+        },
+        {
+          "name": "value",
+          "type": "string | number",
+          "required": true,
+          "doc": "Значение — уже отформатированное."
+        },
+        {
+          "name": "delta",
+          "type": "number",
+          "required": false,
+          "doc": "Изменение в процентах. Знак задаёт цвет и направление стрелки."
+        },
+        {
+          "name": "icon",
+          "type": "ReactNode",
+          "required": false,
+          "doc": "Иконка в правом верхнем углу."
+        },
+        {
+          "name": "hint",
+          "type": "string",
+          "required": false,
+          "doc": "Пояснение под значением: «за 30 дней»."
+        },
+        {
+          "name": "onClick",
+          "type": "() => void",
+          "required": false,
+          "doc": "Делает карточку кликабельной."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "StatChips",
+      "file": "src/components/StatChips.tsx",
+      "doc": "Ряд компактных показателей, работающий и как фильтр списка.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "items",
+          "type": "StatChip[]",
+          "required": true,
+          "doc": "Фишки слева направо."
+        },
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "doc": "Ключ активной фишки."
+        },
+        {
+          "name": "onChange",
+          "type": "(key: string) => void",
+          "required": false,
+          "doc": "Клик по фишке. Без обработчика фишки некликабельны."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "Stepper",
+      "file": "src/components/Stepper.tsx",
+      "doc": "Индикатор прогресса по шагам мастера.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "steps",
+          "type": "Step[]",
+          "required": true,
+          "doc": "Шаги по порядку."
+        },
+        {
+          "name": "current",
+          "type": "number",
+          "required": true,
+          "doc": "Индекс текущего шага, с нуля. Предыдущие помечаются выполненными."
+        },
+        {
+          "name": "onStepClick",
+          "type": "(index: number) => void",
+          "required": false,
+          "doc": "Клик по шагу. Без обработчика шаги некликабельны."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "Tag",
+      "file": "src/components/Tag.tsx",
+      "doc": "Цветная метка записи. Для статусов без удаления берите `Badge` из shadcn.",
+      "generics": [],
+      "extends": [
+        "React.HTMLAttributes<HTMLSpanElement>"
+      ],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Текст метки."
+        },
+        {
+          "name": "onRemove",
+          "type": "() => void",
+          "required": false,
+          "doc": "Показывает крестик. Без обработчика крестика нет."
+        },
+        {
+          "name": "color",
+          "type": "TagColor",
+          "required": false,
+          "doc": "Цвет метки.",
+          "default": "'neutral'"
+        }
+      ]
+    },
+    {
+      "name": "Timeline",
+      "file": "src/components/Timeline.tsx",
+      "doc": "Лента событий по записи — оболочка для `TimelineItem`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "События `TimelineItem`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "TimelineItem",
+      "file": "src/components/Timeline.tsx",
+      "doc": "Событие в ленте.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "variant",
+          "type": "TimelineVariant",
+          "required": false,
+          "doc": "Смысловой цвет точки на линии.",
+          "default": "'neutral'"
+        },
+        {
+          "name": "time",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Когда произошло."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка вместо точки."
+        },
+        {
+          "name": "title",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Заголовок события."
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Подробности под заголовком."
+        }
+      ]
+    },
+    {
+      "name": "TimePicker",
+      "file": "src/components/TimePicker.tsx",
+      "doc": "Выбор времени из списка с заданным шагом. Поиск в поле позволяет набрать «14» и сразу перейти к нужному часу.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "value",
+          "type": "string",
+          "required": false,
+          "doc": "Время в формате `ЧЧ:ММ`."
+        },
+        {
+          "name": "onChange",
+          "type": "(value: string) => void",
+          "required": true,
+          "doc": "Выбор времени."
+        },
+        {
+          "name": "step",
+          "type": "number",
+          "required": false,
+          "doc": "Шаг между вариантами в минутах.",
+          "default": "30"
+        },
+        {
+          "name": "disabled",
+          "type": "boolean",
+          "required": false,
+          "doc": "Заблокировать поле."
+        },
+        {
+          "name": "placeholder",
+          "type": "string",
+          "required": false,
+          "doc": "Подсказка в пустом поле.",
+          "default": "'чч:мм'"
+        }
+      ]
+    },
+    {
+      "name": "Toolbar",
+      "file": "src/components/Toolbar.tsx",
+      "doc": "Панель над списком: поиск, фильтры, действия в одну строку с переносом.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Содержимое панели: `FilterChip`, кнопки, поиск."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "Tree",
+      "file": "src/components/Tree.tsx",
+      "doc": "Дерево — оболочка для `TreeItem`.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Узлы `TreeItem`."
+        },
+        {
+          "name": "className",
+          "type": "string",
+          "required": false,
+          "doc": "Дополнительные CSS-классы корневого элемента."
+        }
+      ]
+    },
+    {
+      "name": "TreeItem",
+      "file": "src/components/Tree.tsx",
+      "doc": "Узел дерева. Раскрывается сам, если внутри есть вложенные узлы.",
+      "generics": [],
+      "extends": [],
+      "props": [
+        {
+          "name": "label",
+          "type": "React.ReactNode",
+          "required": true,
+          "doc": "Подпись узла."
+        },
+        {
+          "name": "icon",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Иконка слева от подписи."
+        },
+        {
+          "name": "count",
+          "type": "number",
+          "required": false,
+          "doc": "Счётчик справа."
+        },
+        {
+          "name": "level",
+          "type": "number",
+          "required": false,
+          "doc": "Уровень вложенности: задаёт отступ слева.",
+          "default": "0"
+        },
+        {
+          "name": "active",
+          "type": "boolean",
+          "required": false,
+          "doc": "Текущий узел — подсвечивается."
+        },
+        {
+          "name": "defaultExpanded",
+          "type": "boolean",
+          "required": false,
+          "doc": "Раскрыть узел при первом рендере.",
+          "default": "false"
+        },
+        {
+          "name": "onSelect",
+          "type": "() => void",
+          "required": false,
+          "doc": "Клик по узлу."
+        },
+        {
+          "name": "children",
+          "type": "React.ReactNode",
+          "required": false,
+          "doc": "Вложенные `TreeItem`."
+        }
+      ]
+    }
+  ],
+  "shadcn": [
+    {
+      "module": "alert",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "destructive"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "badge",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "secondary",
+            "destructive",
+            "outline",
+            "ghost",
+            "link"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "button-group",
+      "variants": {
+        "orientation": {
+          "options": [
+            "horizontal",
+            "vertical"
+          ],
+          "default": "horizontal"
+        }
+      }
+    },
+    {
+      "module": "button",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "destructive",
+            "outline",
+            "secondary",
+            "ghost",
+            "link"
+          ],
+          "default": "default"
+        },
+        "size": {
+          "options": [
+            "default",
+            "xs",
+            "sm",
+            "lg",
+            "icon",
+            "icon-xs",
+            "icon-sm",
+            "icon-lg"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "empty",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "icon"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "field",
+      "variants": {
+        "orientation": {
+          "options": [
+            "vertical",
+            "horizontal",
+            "responsive"
+          ],
+          "default": "vertical"
+        }
+      }
+    },
+    {
+      "module": "input-group",
+      "variants": {
+        "align": {
+          "options": [
+            "inline-start",
+            "inline-end",
+            "block-start",
+            "block-end"
+          ],
+          "default": "inline-start"
+        },
+        "size": {
+          "options": [
+            "xs",
+            "sm",
+            "icon-xs",
+            "icon-sm"
+          ],
+          "default": "xs"
+        }
+      }
+    },
+    {
+      "module": "item",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "icon",
+            "image"
+          ],
+          "default": "default"
+        },
+        "size": {
+          "options": [
+            "default",
+            "sm"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "sidebar",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "outline"
+          ],
+          "default": "default"
+        },
+        "size": {
+          "options": [
+            "default",
+            "sm",
+            "lg"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "tabs",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "line"
+          ],
+          "default": "default"
+        }
+      }
+    },
+    {
+      "module": "toggle",
+      "variants": {
+        "variant": {
+          "options": [
+            "default",
+            "outline"
+          ],
+          "default": "default"
+        },
+        "size": {
+          "options": [
+            "default",
+            "sm",
+            "lg"
+          ],
+          "default": "default"
+        }
+      }
+    }
+  ]
+}

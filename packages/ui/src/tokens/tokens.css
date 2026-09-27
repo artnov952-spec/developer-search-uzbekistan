@@ -1,0 +1,158 @@
+/* ============================================================
+   Токены кита.
+
+   Источник правды по цвету — палитра shadcn в tailwind.css
+   (--background/--foreground/--primary/--muted/--border/--ring/...).
+   Здесь эти значения только раскладываются по историческим именам кита
+   (--sf-*, --tx-*, --bd-*, --brand*), чтобы 61 самописный компонент,
+   ещё не переведённый на Tailwind, автоматически получил вид shadcn
+   и не требовал построчной переделки CSS.
+
+   Правило: НЕ хардкодить цвет здесь. Новый цвет добавляется в палитру
+   shadcn, сюда — только ссылка на него.
+   ============================================================ */
+
+:root {
+  /* --- Поверхности --- */
+  --sf-app: var(--background);
+  --sf-1: var(--card);
+  --sf-2: var(--muted);
+  --sf-3: var(--secondary);
+  --sf-overlay: var(--popover);
+  --sf-scrim: color-mix(in oklch, var(--foreground) 42%, transparent);
+
+  /* --- Тёмный rail навигации (тёмный в обеих темах) --- */
+  --rail-bg: oklch(0.205 0 0);
+  --rail-fg: oklch(0.708 0 0);
+  --rail-fg-strong: oklch(0.985 0 0);
+  --rail-active-bg: oklch(1 0 0 / 10%);
+  --rail-active-fg: oklch(1 0 0);
+  --rail-hover-bg: oklch(1 0 0 / 6%);
+
+  /* --- Текст --- */
+  --tx-1: var(--foreground);
+  --tx-2: var(--muted-foreground);
+  --tx-muted: var(--muted-foreground);
+  --tx-on-accent: var(--primary-foreground);
+  --tx-disabled: color-mix(in oklch, var(--muted-foreground) 55%, transparent);
+
+  /* --- Границы --- */
+  --bd-subtle: color-mix(in oklch, var(--border) 55%, var(--background) 45%);
+  --bd: var(--border);
+  --bd-strong: color-mix(in oklch, var(--border) 72%, var(--foreground) 28%);
+  --bd-focus: var(--ring);
+
+  /* --- Бренд-акцент (в shadcn это --primary; --accent там занят под hover-фон) --- */
+  --brand: var(--primary);
+  --brand-hover: color-mix(in oklch, var(--primary) 90%, transparent);
+  --brand-active: color-mix(in oklch, var(--primary) 80%, transparent);
+  --brand-soft: var(--accent);
+  --brand-soft-fg: var(--accent-foreground);
+
+  /* --- Смысловые цвета --- */
+  --success: oklch(0.596 0.145 163.225);
+  --success-soft: color-mix(in oklch, oklch(0.596 0.145 163.225) 12%, var(--background));
+  --success-soft-fg: color-mix(in oklch, oklch(0.596 0.145 163.225) 75%, var(--foreground));
+  --warning: oklch(0.681 0.162 75.834);
+  --warning-soft: color-mix(in oklch, oklch(0.681 0.162 75.834) 14%, var(--background));
+  --warning-soft-fg: color-mix(in oklch, oklch(0.681 0.162 75.834) 75%, var(--foreground));
+  --danger: var(--destructive);
+  --danger-soft: color-mix(in oklch, var(--destructive) 12%, var(--background));
+  --danger-soft-fg: color-mix(in oklch, var(--destructive) 75%, var(--foreground));
+  --info: oklch(0.588 0.158 254.624);
+  --info-soft: color-mix(in oklch, oklch(0.588 0.158 254.624) 12%, var(--background));
+  --info-soft-fg: color-mix(in oklch, oklch(0.588 0.158 254.624) 75%, var(--foreground));
+  --neutral-soft: var(--muted);
+  --neutral-soft-fg: var(--muted-foreground);
+
+  /* --- Тени (как в shadcn: очень сдержанные) --- */
+  --sh-sm: 0 1px 2px 0 oklch(0 0 0 / 5%);
+  --sh-pop: 0 4px 12px oklch(0 0 0 / 8%), 0 1px 3px oklch(0 0 0 / 6%);
+  --sh-modal: 0 16px 48px oklch(0 0 0 / 18%), 0 4px 12px oklch(0 0 0 / 8%);
+  --ring-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 50%, transparent);
+
+  /* --- Типографика --- */
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+  --fs-11: 11px; --fs-12: 12px; --fs-13: 14px; --fs-14: 14px;
+  --fs-16: 16px; --fs-18: 18px; --fs-22: 22px; --fs-28: 28px;
+  --fw-normal: 400; --fw-medium: 500; --fw-semibold: 600;
+
+  /* --- Отступы (шаг 4) --- */
+  --sp-1: 4px; --sp-2: 8px; --sp-3: 12px; --sp-4: 16px;
+  --sp-5: 20px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px;
+
+  /* --- Радиусы: выведены из shadcn --radius (0.625rem = 10px) --- */
+  --r-xs: calc(var(--radius) - 6px);
+  --r-sm: calc(var(--radius) - 4px);
+  --r-md: calc(var(--radius) - 2px);
+  --r-lg: var(--radius);
+  --r-xl: calc(var(--radius) + 4px);
+  --r-full: 999px;
+
+  /* --- Высоты контролов: как в shadcn (h-8 / h-9 / h-10) --- */
+  --h-compact: 32px;
+  --h-default: 36px;
+  --h-lg: 40px;
+
+  /* --- z-index --- */
+  --z-sticky: 10; --z-dropdown: 40; --z-overlay: 50; --z-modal: 60; --z-toast: 70; --z-tooltip: 80;
+
+  /* --- Движение --- */
+  --dur-fast: 90ms; --dur: 140ms; --dur-slow: 220ms;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+[data-theme='dark'] {
+  --rail-bg: oklch(0.145 0 0);
+  --sh-sm: 0 1px 2px 0 oklch(0 0 0 / 40%);
+  --sh-pop: 0 4px 12px oklch(0 0 0 / 45%), 0 1px 3px oklch(0 0 0 / 35%);
+  --sh-modal: 0 16px 48px oklch(0 0 0 / 60%), 0 4px 12px oklch(0 0 0 / 40%);
+  --bd-strong: color-mix(in oklch, var(--border) 60%, var(--foreground) 40%);
+}
+
+/* Компактная плотность — уменьшает высоты контролов и строк */
+[data-density='compact'] {
+  --h-compact: 28px;
+  --h-default: 32px;
+  --h-lg: 36px;
+  --row-h: 34px;
+}
+[data-density='default'] {
+  --row-h: 40px;
+}
+
+/* ============================================================
+   Палитра акцентов. Переопределяет --primary (бренд-цвет shadcn).
+   neutral — дефолт: чёрный на светлой теме, белый на тёмной,
+   ровно как в стандартном shadcn. Остальные цвета — под брендбук.
+   ============================================================ */
+[data-accent='blue']    { --primary: oklch(0.546 0.215 262.881); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='indigo']  { --primary: oklch(0.511 0.262 276.966); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='violet']  { --primary: oklch(0.541 0.281 293.009); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='purple']  { --primary: oklch(0.558 0.288 302.321); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='fuchsia'] { --primary: oklch(0.591 0.293 322.896); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='pink']    { --primary: oklch(0.592 0.249 0.584); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='rose']    { --primary: oklch(0.586 0.253 17.585); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='orange']  { --primary: oklch(0.646 0.222 41.116); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='amber']   { --primary: oklch(0.666 0.179 58.318); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='green']   { --primary: oklch(0.596 0.145 163.225); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='teal']    { --primary: oklch(0.6 0.118 184.704); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='cyan']    { --primary: oklch(0.609 0.126 221.723); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='sky']     { --primary: oklch(0.588 0.158 241.966); --primary-foreground: oklch(0.985 0 0); }
+[data-accent='slate']   { --primary: oklch(0.554 0.046 257.417); --primary-foreground: oklch(0.985 0 0); }
+
+/* ============================================================
+   Шрифт — свапаемый токен. Все варианты покрывают латиницу И кириллицу.
+   ============================================================ */
+[data-font='inter']        { --font: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif; }
+[data-font='manrope']      { --font: 'Manrope', ui-sans-serif, system-ui, sans-serif; }
+[data-font='golos']        { --font: 'Golos Text', ui-sans-serif, system-ui, sans-serif; }
+[data-font='onest']        { --font: 'Onest', ui-sans-serif, system-ui, sans-serif; }
+[data-font='rubik']        { --font: 'Rubik', ui-sans-serif, system-ui, sans-serif; }
+[data-font='plex']         { --font: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; }
+[data-font='montserrat']   { --font: 'Montserrat', ui-sans-serif, system-ui, sans-serif; }
+[data-font='nunito']       { --font: 'Nunito Sans', ui-sans-serif, system-ui, sans-serif; }
+[data-font='commissioner'] { --font: 'Commissioner', ui-sans-serif, system-ui, sans-serif; }
+[data-font='unbounded']    { --font: 'Unbounded', ui-sans-serif, system-ui, sans-serif; }
+[data-font='system']       { --font: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', 'Helvetica Neue', sans-serif; }

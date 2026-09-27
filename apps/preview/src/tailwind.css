@@ -1,0 +1,8 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+
+/* Тот же слой темы, что внутри библиотеки — утилиты bg-primary/text-muted-foreground
+   резолвятся теми же токенами, что и у компонентов из @cloudplus/ui/shadcn. */
+@import "@cloudplus/ui/theme.css";
+
+@source "./";

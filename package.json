@@ -1,0 +1,20 @@
+{
+  "name": "cloudplus-ui-workspace",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Cloudplus UI — монорепо: библиотека (packages/ui), витрина компонентов (apps/preview), дизайн-макеты CRM (apps/design-lab)",
+  "workspaces": [
+    "packages/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w packages/ui && npm run build -w apps/preview && npm run build -w apps/design-lab",
+    "dev:preview": "npm run dev -w apps/preview",
+    "dev:design-lab": "npm run dev -w apps/design-lab",
+    "typecheck": "npm run typecheck -w packages/ui && npm run typecheck -w apps/preview && npm run typecheck -w apps/design-lab"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4"
+  }
+}

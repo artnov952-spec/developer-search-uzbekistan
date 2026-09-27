@@ -1,0 +1,96 @@
+.cx { display: flex; height: 100%; background: var(--sf-app); overflow: hidden; position: relative; }
+
+/* Тёмный rail — детали */
+.cx-rail__logo {
+  width: 30px; height: 30px; border-radius: var(--r-md);
+  background: var(--accent); color: var(--tx-on-accent);
+  display: grid; place-items: center; font-weight: var(--fw-semibold); font-size: var(--fs-14);
+}
+.cx-rail__avatar { padding-top: var(--sp-1); }
+
+/* Вторичная навигация */
+.cx-ws { display: flex; align-items: center; gap: var(--sp-2); }
+.cx-ws__mark {
+  width: 30px; height: 30px; border-radius: var(--r-md);
+  background: var(--sf-3); color: var(--tx-1);
+  display: grid; place-items: center; font-weight: var(--fw-semibold); font-size: var(--fs-14);
+}
+.cx-ws__name { font-size: var(--fs-14); font-weight: var(--fw-semibold); color: var(--tx-1); }
+.cx-ws__sub { font-size: var(--fs-11); color: var(--tx-muted); }
+.cx-nav-foot {
+  margin-top: auto; padding: var(--sp-3) var(--sp-2) var(--sp-1);
+  font-size: var(--fs-12); color: var(--tx-muted);
+  display: flex; align-items: center; gap: 6px;
+}
+.cx-nav-foot__dot { width: 7px; height: 7px; border-radius: var(--r-full); background: var(--success); }
+.cx-nav-foot__on { color: var(--success-soft-fg); }
+
+/* Основная область */
+.cx-main { flex: 1; min-width: 0; display: flex; flex-direction: column; overflow: hidden; }
+
+.cx-head {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--sp-3) var(--sp-6);
+  border-bottom: 1px solid var(--bd-subtle);
+}
+.cx-head__actions { display: flex; align-items: center; gap: var(--sp-2); }
+
+.cx-hero {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-4);
+  padding: var(--sp-5) var(--sp-6) var(--sp-3);
+}
+.cx-hero__title { display: flex; align-items: baseline; gap: var(--sp-3); }
+.cx-hero__title h1 { font-size: var(--fs-28); font-weight: var(--fw-semibold); letter-spacing: -0.01em; }
+.cx-hero__count { font-size: var(--fs-13); color: var(--tx-muted); }
+.cx-hero__search { width: 380px; max-width: 42vw; }
+
+/* Стат-чипы (как бейджи-счётчики в референсах) */
+.cx-stats { display: flex; gap: var(--sp-2); padding: 0 var(--sp-6) var(--sp-3); }
+.cx-stat {
+  display: flex; flex-direction: column; gap: 2px;
+  min-width: 96px; padding: var(--sp-2) var(--sp-3);
+  border: 1px solid var(--bd); border-radius: var(--r-lg);
+  background: var(--sf-1); cursor: pointer; text-align: left;
+  transition: border-color var(--dur) var(--ease), background var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+.cx-stat:hover { border-color: var(--bd-strong); background: var(--sf-2); }
+.cx-stat--on { border-color: var(--accent); box-shadow: var(--ring); background: var(--sf-app); }
+.cx-stat__n { font-size: var(--fs-18); font-weight: var(--fw-semibold); color: var(--tx-1); display: inline-flex; align-items: center; gap: 6px; font-variant-numeric: tabular-nums; }
+.cx-stat__l { font-size: var(--fs-12); color: var(--tx-muted); }
+.cx-dot { width: 8px; height: 8px; border-radius: var(--r-full); }
+.cx-dot--success { background: var(--success); }
+.cx-dot--warning { background: var(--warning); }
+.cx-dot--neutral { background: var(--tx-muted); }
+
+.cx-filters {
+  display: flex; align-items: center; gap: var(--sp-2);
+  padding: 0 var(--sp-6) var(--sp-3);
+}
+.cx-filters__contact { width: 260px; }
+.cx-filters__spacer { flex: 1; }
+.cx-sel { font-size: var(--fs-12); color: var(--accent-soft-fg); background: var(--accent-soft); padding: 4px 10px; border-radius: var(--r-full); }
+
+.cx-table { flex: 1; overflow: auto; padding: 0 var(--sp-6) var(--sp-4); }
+.cx-table .ui-grid { box-shadow: var(--sh-sm); }
+
+.cx-cell-company { display: flex; align-items: center; gap: var(--sp-2); }
+.cx-cell-company__name { font-weight: var(--fw-medium); }
+.cx-cell-owner { display: flex; align-items: center; gap: var(--sp-2); }
+.cx-muted { color: var(--tx-muted); }
+.cx-strong { font-weight: var(--fw-semibold); color: var(--tx-1); }
+
+.cx-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-6);
+  border-top: 1px solid var(--bd);
+}
+.cx-foot__count { font-size: var(--fs-13); color: var(--tx-2); }
+.cx-foot__count b { color: var(--tx-1); font-variant-numeric: tabular-nums; }
+
+/* Плавающая кнопка телефонии (как в референсе) */
+.cx-fab {
+  position: absolute; right: var(--sp-6); bottom: var(--sp-6);
+  width: 46px; height: 46px; border-radius: var(--r-full);
+  background: var(--accent); color: var(--tx-on-accent);
+  display: grid; place-items: center; box-shadow: var(--sh-modal);
+}

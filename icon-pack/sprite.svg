@@ -1,0 +1,202 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <symbol id="cp-crm" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="M8 9.5h8M8 13.5h4"/><circle cx="15.5" cy="13.5" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-dashboard" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="9.2" rx="2"/><rect x="13" y="4" width="7" height="5" rx="2"/><rect x="13" y="10.8" width="7" height="9.2" rx="2"/><rect x="4" y="15" width="7" height="5" rx="2"/></symbol>
+  <symbol id="cp-logos" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 16.8a7.4 7.4 0 1 1 14.8 0"/><path d="M4.6 16.8h2M17.4 16.8h2M6.6 9.4l1.4 1.4M17.4 9.4 16 10.8"/><path d="M12 16.8 15.6 10.8"/><circle cx="12" cy="16.8" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-mitos" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="m8.4 12.2 2.5 2.5 4.7-5.2"/></symbol>
+  <symbol id="cp-telegram" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 3.6 3.6 10.7l6.4 2.8 2.6 6.9Z"/><path d="M20.8 3.6 10 13.5"/></symbol>
+  <symbol id="cp-communications" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 9a4.5 4.5 0 0 1 4.5-4.5h7A4.5 4.5 0 0 1 20 9v3a4.5 4.5 0 0 1-4.5 4.5H12l-4.4 3a.5.5 0 0 1-.8-.4v-2.9A4.5 4.5 0 0 1 4 12Z"/><circle cx="12" cy="10.5" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="M4 9.5h16M8.5 3v3.4M15.5 3v3.4"/><circle cx="9" cy="14" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-database" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 6.8c0-1.55 3.36-2.8 7.5-2.8s7.5 1.25 7.5 2.8-3.36 2.8-7.5 2.8-7.5-1.25-7.5-2.8Z"/><path d="M4.5 6.8v10.4c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8V6.8"/><path d="M4.5 12c0 1.55 3.36 2.8 7.5 2.8s7.5-1.25 7.5-2.8"/></symbol>
+  <symbol id="cp-structure" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9.5" y="3" width="5" height="4.6" rx="1.5"/><rect x="3.6" y="16.4" width="5" height="4.6" rx="1.5"/><rect x="15.4" y="16.4" width="5" height="4.6" rx="1.5"/><path d="M12 7.6v2.6M6.1 16.4v-2.2a1.4 1.4 0 0 1 1.4-1.4h9a1.4 1.4 0 0 1 1.4 1.4v2.2"/></symbol>
+  <symbol id="cp-sales-rating" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4.4" y="12.4" width="4.4" height="7.6" rx="1.5"/><rect x="9.8" y="8" width="4.4" height="12" rx="1.5"/><rect x="15.2" y="14.8" width="4.4" height="5.2" rx="1.5"/><circle cx="12" cy="4.6" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-knowledge" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 6.4a3 3 0 0 0-2.4-1.6l-4.2-.4A1.4 1.4 0 0 0 4 5.8v9.4a1.4 1.4 0 0 0 1.3 1.4l4.3.4A3 3 0 0 1 12 18.6Z"/><path d="M12 6.4a3 3 0 0 1 2.4-1.6l4.3-.4A1.4 1.4 0 0 1 20 5.8v9.4a1.4 1.4 0 0 1-1.3 1.4l-4.3.4A3 3 0 0 0 12 18.6"/></symbol>
+  <symbol id="cp-assistant" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M11.4 8H16a1.6 1.6 0 0 1 1.6 1.6V14a4 4 0 0 1-4 4H8a1.6 1.6 0 0 1-1.6-1.6V12a4 4 0 0 1 4-4Z"/><path d="M12 8V5.6M9.8 12.4v1.6M14.2 12.4v1.6"/><circle cx="12" cy="4.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-action-log" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19.6 12a7.6 7.6 0 1 1-2.3-5.4"/><path d="M20 4.2v3.6h-3.6M12 8.2v4.2l2.8 1.6"/></symbol>
+  <symbol id="cp-dev" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8.6 8.4-4 3.6 4 3.6M15.4 8.4l4 3.6-4 3.6M13.4 5.6 10.6 18.4"/></symbol>
+  <symbol id="cp-company" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="M8 9.4h2.2M13.8 9.4H16M8 13h2.2M13.8 13H16M10.6 20v-3.2h2.8V20"/></symbol>
+  <symbol id="cp-contact" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.6" r="3.4"/><path d="M5.4 19.8a6.6 6.6 0 0 1 13.2 0"/></symbol>
+  <symbol id="cp-deal" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="12" r="5.4"/><circle cx="14.8" cy="12" r="5.4"/><circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-lead" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.4 4.4H10v7.6a2 2 0 0 0 4 0V4.4h3.6v7.6a5.6 5.6 0 0 1-11.2 0Z"/><path d="M6.4 8.6H10M14 8.6h3.6"/></symbol>
+  <symbol id="cp-task" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4 7.2 1.8 1.8L9 5.6M4 15.4l1.8 1.8L9 13.8M11.8 7.4h8.2M11.8 15.6h8.2"/></symbol>
+  <symbol id="cp-project" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10.4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5.6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M9 8.4V6.6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.8"/><circle cx="12" cy="13.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-team" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.4" cy="9" r="3"/><path d="M3.8 19.4a5.6 5.6 0 0 1 11.2 0"/><path d="M16 6.4a3 3 0 0 1 0 5.2M17.4 14.6a5.6 5.6 0 0 1 2.8 4.8"/></symbol>
+  <symbol id="cp-user" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><circle cx="12" cy="10.6" r="2.4"/><path d="M7.8 18.4a4.6 4.6 0 0 1 8.4 0"/></symbol>
+  <symbol id="cp-employee" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.4" r="2.8"/><path d="M6.4 19.6a5.6 5.6 0 0 1 11.2 0"/><circle cx="17.2" cy="6.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-client" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8.6" r="3.2"/><path d="M5.8 19.8a6.2 6.2 0 0 1 12.4 0"/><path d="M18.4 3 19.3 5l2 .3-1.45 1.45.35 2.05-1.8-.95-1.8.95.35-2.05L15 5.3l2-.3Z"/></symbol>
+  <symbol id="cp-supplier" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 8.4a1.6 1.6 0 0 1 1.6-1.6h6.6a1.6 1.6 0 0 1 1.6 1.6v7.8H3.6Z"/><path d="M13.4 10.4h3.2l3.4 3.2v2.6h-6.6Z"/><circle cx="7.4" cy="17.8" r="1.9"/><circle cx="16.6" cy="17.8" r="1.9"/></symbol>
+  <symbol id="cp-product" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.6 20.2 8v8L12 20.4 3.8 16V8Z"/><path d="M3.8 8 12 12.4 20.2 8M12 12.4v8"/><circle cx="12" cy="3.6" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-funnel" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 5.4a1 1 0 0 1 .94-1.4h14.52a1 1 0 0 1 .94 1.4L14.4 12.6v6.2l-4.8 2.2v-8.4Z"/><circle cx="12" cy="8.2" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-pipeline" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.8" y="4.4" width="4.4" height="15.2" rx="1.6"/><rect x="9.8" y="4.4" width="4.4" height="10.6" rx="1.6"/><rect x="15.8" y="4.4" width="4.4" height="13" rx="1.6"/></symbol>
+  <symbol id="cp-stage" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 6.6a1.6 1.6 0 0 1 1.6-1.6h9.2l4.4 7-4.4 7H5.4a1.6 1.6 0 0 1-1.6-1.6Z"/><circle cx="10" cy="12" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-forecast" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 16.4 9 12l3.4 2.6L20 7"/><path d="M14.8 19h1.6M18.4 19H20"/><circle cx="20" cy="7" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-revenue" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4.5H18.5a2 2 0 0 1 2 2V14.5a5 5 0 0 1-5 5H5.5a2 2 0 0 1-2-2V9.5a5 5 0 0 1 5-5Z"/><circle cx="12" cy="12" r="2.9"/><path d="M6.6 12h.8M16.6 12h.8"/></symbol>
+  <symbol id="cp-invoice" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 6.4A2.4 2.4 0 0 1 7.4 4h6.2L19 9.4v8.2A2.4 2.4 0 0 1 16.6 20H7.4A2.4 2.4 0 0 1 5 17.6Z"/><path d="M13.4 4.2v5.4H19M8.6 13h5.6M8.6 16.2h3.4"/></symbol>
+  <symbol id="cp-payment" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4.5H18.5a2 2 0 0 1 2 2V14.5a5 5 0 0 1-5 5H5.5a2 2 0 0 1-2-2V9.5a5 5 0 0 1 5-5Z"/><path d="M3.5 9.6h17"/><circle cx="8" cy="15.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-discount" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18.4 5.6 5.6 18.4"/><circle cx="8" cy="8" r="2.6"/><circle cx="16" cy="16" r="2.6"/></symbol>
+  <symbol id="cp-quota" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="M8 15.4v-3M12 15.4V9.6M16 15.4v-1.8"/><circle cx="12" cy="7" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-target" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.8"/><circle cx="12" cy="12" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-deal-won" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4.4h8v4.6a4 4 0 0 1-8 0Z"/><path d="M8 6.2H6.2a2 2 0 0 0 0 4h.6M16 6.2h1.8a2 2 0 0 1 0 4h-.6"/><path d="M12 13v3.2M8.8 19.6h6.4a3.2 3.2 0 0 0-6.4 0Z"/></symbol>
+  <symbol id="cp-deal-lost" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9.2" cy="12" r="5.4"/><circle cx="14.8" cy="12" r="5.4"/><path d="M4.8 19.2 19.2 4.8"/></symbol>
+  <symbol id="cp-call" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 4.6a1.9 1.9 0 0 1 2.6.5l1.4 2a1.9 1.9 0 0 1-.3 2.5l-1.1.9a12.2 12.2 0 0 0 4.7 4.7l.9-1.1a1.9 1.9 0 0 1 2.5-.3l2 1.4a1.9 1.9 0 0 1 .5 2.6l-1 1.4a2.6 2.6 0 0 1-3 .9A17.6 17.6 0 0 1 3.9 9a2.6 2.6 0 0 1 .9-3Z"/></symbol>
+  <symbol id="cp-call-in" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 4.6a1.9 1.9 0 0 1 2.6.5l1.4 2a1.9 1.9 0 0 1-.3 2.5l-1.1.9a12.2 12.2 0 0 0 4.7 4.7l.9-1.1a1.9 1.9 0 0 1 2.5-.3l2 1.4a1.9 1.9 0 0 1 .5 2.6l-1 1.4a2.6 2.6 0 0 1-3 .9A17.6 17.6 0 0 1 3.9 9a2.6 2.6 0 0 1 .9-3Z"/><path d="M20.4 3.6 15.6 8.4M15.6 4.2v4.2h4.2"/></symbol>
+  <symbol id="cp-call-out" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 4.6a1.9 1.9 0 0 1 2.6.5l1.4 2a1.9 1.9 0 0 1-.3 2.5l-1.1.9a12.2 12.2 0 0 0 4.7 4.7l.9-1.1a1.9 1.9 0 0 1 2.5-.3l2 1.4a1.9 1.9 0 0 1 .5 2.6l-1 1.4a2.6 2.6 0 0 1-3 .9A17.6 17.6 0 0 1 3.9 9a2.6 2.6 0 0 1 .9-3Z"/><path d="M15.6 8.4 20.4 3.6M20.4 7.8V3.6h-4.2"/></symbol>
+  <symbol id="cp-call-missed" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.2 4.6a1.9 1.9 0 0 1 2.6.5l1.4 2a1.9 1.9 0 0 1-.3 2.5l-1.1.9a12.2 12.2 0 0 0 4.7 4.7l.9-1.1a1.9 1.9 0 0 1 2.5-.3l2 1.4a1.9 1.9 0 0 1 .5 2.6l-1 1.4a2.6 2.6 0 0 1-3 .9A17.6 17.6 0 0 1 3.9 9a2.6 2.6 0 0 1 .9-3Z"/><path d="m15.8 4 4.6 4.6M20.4 4l-4.6 4.6"/></symbol>
+  <symbol id="cp-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 4.5H18.5a2 2 0 0 1 2 2V14.5a5 5 0 0 1-5 5H5.5a2 2 0 0 1-2-2V9.5a5 5 0 0 1 5-5Z"/><path d="m4.4 8 6.3 4.4a2.2 2.2 0 0 0 2.6 0L19.6 8"/></symbol>
+  <symbol id="cp-mail-send" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.6 6.4a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v4.2"/><path d="M3.6 6.4v9.2a2 2 0 0 0 2 2h6.6"/><path d="m4.2 7 6 4.2a2.2 2.2 0 0 0 2.6 0l6-4.2"/><path d="M15.4 18.4h5.2M18.2 16l2.4 2.4-2.4 2.4"/></symbol>
+  <symbol id="cp-mail-open" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 10.6 12 5l8.2 5.6v6.8a2.6 2.6 0 0 1-2.6 2.6H6.4a2.6 2.6 0 0 1-2.6-2.6Z"/><path d="m3.8 10.6 6.8 4.6a2.4 2.4 0 0 0 2.8 0l6.8-4.6"/></symbol>
+  <symbol id="cp-voice" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.8a2.8 2.8 0 0 1 2.8 2.8v4.8a2.8 2.8 0 0 1-5.6 0V6.6A2.8 2.8 0 0 1 12 3.8Z"/><path d="M6.4 11.2a5.6 5.6 0 0 0 11.2 0M12 16.8v3.4"/></symbol>
+  <symbol id="cp-video-call" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 8.8a2.4 2.4 0 0 1 2.4-2.4h6.4a2.4 2.4 0 0 1 2.4 2.4v6.4a2.4 2.4 0 0 1-2.4 2.4H6.2a2.4 2.4 0 0 1-2.4-2.4Z"/><path d="m15 11.4 3.6-2.5a.9.9 0 0 1 1.4.75v4.7a.9.9 0 0 1-1.4.75L15 12.6"/></symbol>
+  <symbol id="cp-meeting" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.4" cy="7.6" r="2.4"/><circle cx="16.6" cy="7.6" r="2.4"/><path d="M3.8 16.2a3.8 3.8 0 0 1 3.6-3.8M20.2 16.2a3.8 3.8 0 0 0-3.6-3.8M4.8 18.4h14.4"/><circle cx="12" cy="12.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-note" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 6.4A2.4 2.4 0 0 1 7 4h10.6A2.4 2.4 0 0 1 20 6.4V15l-5 5H7a2.4 2.4 0 0 1-2.4-2.4Z"/><path d="M20 15h-3a2 2 0 0 0-2 2v3M8.4 9.4h7.2M8.4 12.8h4.4"/></symbol>
+  <symbol id="cp-comment" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8.8a4 4 0 0 1 4-4h8a4 4 0 0 1 4 4v3.6a4 4 0 0 1-4 4h-4.6l-3.8 2.7a.5.5 0 0 1-.8-.4v-2.5A4 4 0 0 1 4 12.4Z"/><path d="M8.6 9.8h6.8M8.6 12.6h3.8"/></symbol>
+  <symbol id="cp-add" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="M12 8.4v7.2M8.4 12h7.2"/></symbol>
+  <symbol id="cp-edit" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16.4 4.6a2 2 0 0 1 2.8 0l.6.6a2 2 0 0 1 0 2.8L9.6 18.2 5 19.4l1.2-4.6Z"/><path d="M14.8 6.2 18 9.4"/></symbol>
+  <symbol id="cp-delete" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 7h13.2M9 7V5.6a1.6 1.6 0 0 1 1.6-1.6h2.8A1.6 1.6 0 0 1 15 5.6V7"/><path d="M6.8 7v10.6A2.4 2.4 0 0 0 9.2 20h5.6a2.4 2.4 0 0 0 2.4-2.4V7"/><path d="M10.4 11v5.2M13.6 11v5.2"/></symbol>
+  <symbol id="cp-save" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6.4A2.4 2.4 0 0 1 6.4 4h8.2L20 9.4v8.2a2.4 2.4 0 0 1-2.4 2.4H6.4A2.4 2.4 0 0 1 4 17.6Z"/><path d="M8 4v4.4h6.4M8.4 20v-4.4h7.2V20"/></symbol>
+  <symbol id="cp-duplicate" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.6 8.6A2 2 0 0 1 11.6 6.6h6.8a2 2 0 0 1 2 2v6.8a2 2 0 0 1-2 2h-6.8a2 2 0 0 1-2-2Z"/><path d="M14.4 6.6V5.6a2 2 0 0 0-2-2H5.6a2 2 0 0 0-2 2v6.8a2 2 0 0 0 2 2h1"/></symbol>
+  <symbol id="cp-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 6.2a1.8 1.8 0 0 1 1.8-1.8h12.8a1.8 1.8 0 0 1 1.8 1.8v1.6a1.8 1.8 0 0 1-1.8 1.8H5.6a1.8 1.8 0 0 1-1.8-1.8Z"/><path d="M5.4 9.6v7.8A2.6 2.6 0 0 0 8 20h8a2.6 2.6 0 0 0 2.6-2.6V9.6"/><path d="M10 13h4"/></symbol>
+  <symbol id="cp-restore" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19.6 12A7.6 7.6 0 1 1 17 6.2"/><path d="M20 4v3.8h-3.8"/><path d="M12 15.4V9M9.4 11.4 12 8.8l2.6 2.6"/></symbol>
+  <symbol id="cp-share" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="17.4" cy="6.2" r="2.4"/><circle cx="6.6" cy="12" r="2.4"/><circle cx="17.4" cy="17.8" r="2.4"/><path d="m8.8 10.8 6.4-3.4M8.8 13.2l6.4 3.4"/></symbol>
+  <symbol id="cp-link" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.4 13.6a3.6 3.6 0 0 0 5.4.4l2.4-2.4a3.6 3.6 0 0 0-5.1-5.1l-1.4 1.4"/><path d="M13.6 10.4a3.6 3.6 0 0 0-5.4-.4l-2.4 2.4a3.6 3.6 0 0 0 5.1 5.1l1.4-1.4"/></symbol>
+  <symbol id="cp-unlink" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.8 14.2 8 16a3.5 3.5 0 1 1-5-5l1.8-1.8"/><path d="M14.2 9.8 16 8a3.5 3.5 0 1 1 5 5l-1.8 1.8"/><path d="M13.4 10.6 10.6 13.4"/><path d="M7.6 6.4 6.4 5.2M17.6 18.8l-1.2-1.2"/></symbol>
+  <symbol id="cp-export" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.4v3.2A2.4 2.4 0 0 1 17.6 20H6.4A2.4 2.4 0 0 1 4 17.6v-3.2"/><path d="M12 3.8v10.6M8.4 7.4 12 3.8l3.6 3.6"/></symbol>
+  <symbol id="cp-import" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.4v3.2A2.4 2.4 0 0 1 17.6 20H6.4A2.4 2.4 0 0 1 4 17.6v-3.2"/><path d="M12 14.4V3.8M8.4 10.8 12 14.4l3.6-3.6"/></symbol>
+  <symbol id="cp-filter" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 7.4h15.2M4.4 12h15.2M4.4 16.6h15.2"/><circle cx="9" cy="7.4" r="2"/><circle cx="15" cy="12" r="2"/><circle cx="8.4" cy="16.6" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-sort" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4.6v14.8M4.2 16.6 7 19.4l2.8-2.8"/><path d="M13.2 6.6h6.6M13.2 11.4h4.6M13.2 16.2h2.6"/></symbol>
+  <symbol id="cp-file" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 6.4A2.4 2.4 0 0 1 7.8 4h5.8L18.6 9v8.6A2.4 2.4 0 0 1 16.2 20H7.8a2.4 2.4 0 0 1-2.4-2.4Z"/><path d="M13.4 4.2v5h5.2"/></symbol>
+  <symbol id="cp-folder" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.8 7.6A2.2 2.2 0 0 1 6 5.4h3.2l2 2.4h6.8A2.2 2.2 0 0 1 20.2 10v6.4a2.2 2.2 0 0 1-2.2 2.2H6a2.2 2.2 0 0 1-2.2-2.2Z"/></symbol>
+  <symbol id="cp-attachment" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18.6 11.4 11.2 18.8a4.4 4.4 0 0 1-6.2-6.2l7.6-7.6a2.9 2.9 0 0 1 4.1 4.1l-7.5 7.5a1.5 1.5 0 0 1-2.1-2.1l6.9-6.9"/></symbol>
+  <symbol id="cp-image" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="m4.6 17.4 4.2-4.2a1.8 1.8 0 0 1 2.5 0l4 4"/><circle cx="15.4" cy="8.8" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-file-pdf" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 6.4A2.4 2.4 0 0 1 7.8 4h5.8L18.6 9v8.6A2.4 2.4 0 0 1 16.2 20H7.8a2.4 2.4 0 0 1-2.4-2.4Z"/><path d="M13.4 4.2v5h5.2"/><path d="M8.6 16.4V12h1.6a1.4 1.4 0 0 1 0 2.8H8.6M13 16.4V12h1.2a2.2 2.2 0 0 1 0 4.4Z"/></symbol>
+  <symbol id="cp-file-excel" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 6.4A2.4 2.4 0 0 1 7.8 4h5.8L18.6 9v8.6A2.4 2.4 0 0 1 16.2 20H7.8a2.4 2.4 0 0 1-2.4-2.4Z"/><path d="M13.4 4.2v5h5.2"/><path d="m9 12.4 5 4.6M14 12.4l-5 4.6"/></symbol>
+  <symbol id="cp-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 17.4a3.8 3.8 0 0 1-.6-7.55 5 5 0 0 1 9.6-1.1 3.6 3.6 0 0 1 .4 7.15"/><path d="M12 20V11.2M9.2 13.6 12 10.8l2.8 2.8"/></symbol>
+  <symbol id="cp-download" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7.4 16.6a3.8 3.8 0 0 1-.6-7.55 5 5 0 0 1 9.6-1.1 3.6 3.6 0 0 1 .4 7.15"/><path d="M12 10.6v8.8M9.2 16.6 12 19.4l2.8-2.8"/></symbol>
+  <symbol id="cp-check" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="m8.2 12.2 2.6 2.6 5-5.4"/></symbol>
+  <symbol id="cp-pending" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.6V12l3 1.8"/></symbol>
+  <symbol id="cp-warning" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.6 4.8a1.6 1.6 0 0 1 2.8 0l6.8 12.2a1.6 1.6 0 0 1-1.4 2.4H5.2a1.6 1.6 0 0 1-1.4-2.4Z"/><path d="M12 9.6v4"/><circle cx="12" cy="16.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-error" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="m9.2 9.2 5.6 5.6M14.8 9.2l-5.6 5.6"/></symbol>
+  <symbol id="cp-info" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><path d="M12 11.4v4.6"/><circle cx="12" cy="8.4" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-lock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 12.6a2 2 0 0 1 2-2h10.4a2 2 0 0 1 2 2v3.4a4 4 0 0 1-4 4H8.8a4 4 0 0 1-4-4Z"/><path d="M8 10.6V8.4a4 4 0 0 1 8 0v2.2"/><circle cx="12" cy="15" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-unlock" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.8 12.6a2 2 0 0 1 2-2h10.4a2 2 0 0 1 2 2v3.4a4 4 0 0 1-4 4H8.8a4 4 0 0 1-4-4Z"/><path d="M8 10.6V8.4a4 4 0 0 1 7.6-1.8"/><circle cx="12" cy="15" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3.4 12S6.8 6.2 12 6.2 20.6 12 20.6 12 17.2 17.8 12 17.8 3.4 12 3.4 12Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="cp-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.4 6.6A8.6 8.6 0 0 1 12 6.2c5.2 0 8.6 5.8 8.6 5.8a17 17 0 0 1-2.8 3.6M6.2 8.4A16.4 16.4 0 0 0 3.4 12s3.4 5.8 8.6 5.8a8.4 8.4 0 0 0 3-.5"/><path d="M10 10a2.8 2.8 0 0 0 4 4M4.6 4.6l14.8 14.8"/></symbol>
+  <symbol id="cp-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4.6h6l-.8 5.2 3 2.6v1.8H6.8v-1.8l3-2.6Z"/><path d="M12 14.2v5.2"/></symbol>
+  <symbol id="cp-chart-bar" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.6h16"/><rect x="5.4" y="11" width="3.6" height="6" rx="1.4"/><rect x="10.2" y="6.6" width="3.6" height="10.4" rx="1.4"/><rect x="15" y="13.4" width="3.6" height="3.6" rx="1.4"/></symbol>
+  <symbol id="cp-chart-line" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4.4v13.2a2 2 0 0 0 2 2h14"/><path d="m7 15 3.6-4.2 3 2.4 4.6-6"/><circle cx="18.2" cy="7.2" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-chart-donut" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.2"/><circle cx="12" cy="12" r="3.8"/><path d="M12 3.8v4.4"/><circle cx="17.6" cy="15.2" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-report" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.4 6.4A2.4 2.4 0 0 1 7.8 4h5.8L18.6 9v8.6A2.4 2.4 0 0 1 16.2 20H7.8a2.4 2.4 0 0 1-2.4-2.4Z"/><path d="M13.4 4.2v5h5.2"/><path d="M9 16.4v-2.6M12 16.4v-4.6M15 16.4v-1.4"/></symbol>
+  <symbol id="cp-kpi" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="m8.4 14.8 3-3.4 2.2 1.8 3-3.6"/><circle cx="16.6" cy="9.6" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-growth" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4.4 16.6 5-5.2 3.2 2.6 6.8-7"/><path d="M14.6 6.6h5v5"/></symbol>
+  <symbol id="cp-decline" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m4.4 7.4 5 5.2 3.2-2.6 6.8 7"/><path d="M14.6 17.4h5v-5"/></symbol>
+  <symbol id="cp-table" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h9a2 2 0 0 1 2 2v9a5 5 0 0 1-5 5H6a2 2 0 0 1-2-2V9a5 5 0 0 1 5-5Z"/><path d="M4 9.4h16M4 14.8h16M9.6 9.4V20"/><circle cx="6.8" cy="6.8" r="1.15" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="cp-settings" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.4 3.8h3.2l.5 2.3 2 1.15 2.2-.8 1.6 2.8-1.7 1.6v2.3l1.7 1.6-1.6 2.8-2.2-.8-2 1.15-.5 2.3h-3.2l-.5-2.3-2-1.15-2.2.8-1.6-2.8 1.7-1.6v-2.3L4.1 9.25l1.6-2.8 2.2.8 2-1.15Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
+  <symbol id="cp-integration" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h3.2a2.2 2.2 0 0 1 4.4 0H17a2 2 0 0 1 2 2v3.4a2.2 2.2 0 0 1 0 4.4V18a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/></symbol>
+  <symbol id="cp-api" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6.4" cy="6.4" r="2.4"/><circle cx="17.6" cy="6.4" r="2.4"/><circle cx="12" cy="17.6" r="2.4"/><path d="M8.8 6.4h6.4M7.6 8.6l3.2 6.8M16.4 8.6l-3.2 6.8"/></symbol>
+  <symbol id="cp-webhook" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9.4 9.4a3 3 0 1 1 4.4 2.6l2.8 4.8"/><path d="M16.6 13a3 3 0 1 1-2.2 5.4H8.8"/><path d="M11.2 18.4a3 3 0 1 1-4-4.2l2.6-4.6"/></symbol>
+  <symbol id="cp-key" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="7.6" cy="12" r="3.8"/><path d="M11.4 12h8.2M17.2 12v3.2M14.4 12v2.4"/></symbol>
+  <symbol id="cp-shield" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.8 19.4 6v6c0 4.2-3 6.8-7.4 8.2C7.6 18.8 4.6 16.2 4.6 12V6Z"/><path d="m9.2 11.8 2 2 3.6-4"/></symbol>
+  <symbol id="cp-backup" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4.4 7.2c0-1.5 3.4-2.8 7.6-2.8s7.6 1.3 7.6 2.8-3.4 2.8-7.6 2.8-7.6-1.3-7.6-2.8Z"/><path d="M4.4 7.2v9.6c0 1.5 3.4 2.8 7.6 2.8"/><path d="M19.6 7.2v4.4"/><path d="M14.6 16.4h5.4M17.4 13.8l2.6 2.6-2.6 2.6"/></symbol>
+  <symbol id="cp-sync" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M19.4 10.4A7.6 7.6 0 0 0 6.2 7.2"/><path d="M19.6 4.6v4.2h-4.2"/><path d="M4.6 13.6a7.6 7.6 0 0 0 13.2 3.2"/><path d="M4.4 19.4v-4.2h4.2"/></symbol>
+  <symbol id="cp-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6.6 16.4V10.6a5.4 5.4 0 0 1 10.8 0v5.8l1.6 2H5Z"/><path d="M10 20.2a2.2 2.2 0 0 0 4 0"/></symbol>
+  <symbol id="cp-search" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+    stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="10.6" cy="10.6" r="6.2"/><path d="m15.2 15.2 4.6 4.6"/></symbol>
+</svg>

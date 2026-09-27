@@ -1,0 +1,9 @@
+/* Cloudplus Icons - режимы отображения. */
+.cp-icon { display: inline-block; vertical-align: middle; flex: none; }
+
+/* Двухцветный режим: контур наследует текст, акцентная точка - цвет бренда. */
+.cp-icon--duo circle[fill='currentColor'],
+.cp-icon--duo [fill='currentColor'] { fill: var(--cp-icon-accent, #2f6df6); }
+
+/* Приглушенный контур при активной точке - для плотных списков. */
+.cp-icon--soft { opacity: .78; }

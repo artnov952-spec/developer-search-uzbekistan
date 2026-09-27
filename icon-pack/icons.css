@@ -1,0 +1,5 @@
+/* Cloudplus Icons v1.0.0 */
+.cp-icon { display: inline-block; vertical-align: middle; flex: none; }
+/* Двухцветный режим: акцентная точка красится в цвет бренда. */
+.cp-icon--duo [fill='currentColor'] { fill: var(--cp-icon-accent, #2f6df6); }
+.cp-icon--soft { opacity: .78; }

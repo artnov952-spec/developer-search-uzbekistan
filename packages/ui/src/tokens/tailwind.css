@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "./theme.css";
+
+/* Сканируем только исходники библиотеки — классы приложений в пакет не попадают. */
+@source "../components";

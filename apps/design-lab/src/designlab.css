@@ -1,0 +1,15 @@
+.dl-root { min-height: 100%; display: flex; flex-direction: column; }
+.dl-nav {
+  flex: none; display: flex; align-items: center; gap: 4px;
+  padding: 10px 16px; border-bottom: 1px solid var(--bd);
+  background: var(--sf-1);
+}
+.dl-nav__brand { font-weight: 600; font-size: var(--fs-13); color: var(--tx-1); margin-right: 12px; }
+.dl-nav__item {
+  appearance: none; border: 1px solid transparent; background: transparent;
+  color: var(--tx-2); font: inherit; font-size: var(--fs-13); font-weight: 500;
+  padding: 6px 10px; border-radius: var(--r-sm); cursor: pointer;
+}
+.dl-nav__item:hover { background: var(--sf-2); color: var(--tx-1); }
+.dl-nav__item[aria-current='true'] { background: var(--accent-soft); color: var(--accent-soft-fg); }
+.dl-content { flex: 1; min-height: 0; }

@@ -1,0 +1,73 @@
+/* Глобальная база. Подключается один раз (в приложении-потребителе — тоже). */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body, #root { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: var(--fs-14);
+  line-height: 1.45;
+  color: var(--tx-1);
+  background: var(--sf-app);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  font-feature-settings: 'cv11', 'ss01';
+}
+
+/* Сброс отступов — В СЛОЕ, и это принципиально.
+
+   Та же болезнь, что описана ниже про фокус: файл подключается вне CSS-слоёв,
+   а Tailwind целиком живёт в @layer, и неслоёное правило выигрывает у любой
+   утилиты независимо от специфичности. Пока этот сброс стоял вне слоя, ЛЮБАЯ
+   утилита вертикального отступа (mt-, mb-, my-) на <p> и <h1>–<h4> в
+   приложении-потребителе молча ничего не делала: класс в разметке есть,
+   в собранном CSS правило есть, computed margin — 0.
+   Найдено 29.08 в CRM: в панели подключения номера два абзаца с mt-3 стояли
+   вплотную к списку.
+
+   @layer base, а не удаление: слой ставит сброс ровно туда, где живёт preflight
+   Tailwind, — до утилит и после стилей браузера. Потребителю без Tailwind правило
+   действует по-прежнему, конкурировать с ним в этом случае некому. */
+@layer base {
+  h1, h2, h3, h4, p, figure { margin: 0; }
+}
+
+button { font-family: inherit; }
+
+.ui-mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+
+::selection { background: color-mix(in srgb, var(--brand) 24%, transparent); }
+
+/* Фокус НЕ переопределяем глобально.
+
+   Раньше здесь было правило на :where(button, a, input, …):focus-visible со
+   своими box-shadow и border-radius. Этот файл подключается вне CSS-слоёв, а
+   Tailwind целиком живёт в @layer — неслоёное правило выигрывает у любых утилит.
+   В результате у каждого элемента в фокусе радиус схлопывался в --r-sm, ломая
+   rounded-full у Fab, аватаров и пунктов rail.
+
+   Теперь кольцо фокуса даёт shadcn: focus-visible:ring-[3px] + ring-ring/50
+   на самих компонентах. Для своей разметки используйте те же утилиты. */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+/* Тонкие скроллбары в духе плотного интерфейса */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--bd-strong) transparent;
+}
+*::-webkit-scrollbar { width: 10px; height: 10px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--bd-strong);
+  border-radius: var(--r-full);
+  border: 3px solid transparent;
+  background-clip: content-box;
+}
+*::-webkit-scrollbar-track { background: transparent; }
