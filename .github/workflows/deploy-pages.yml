@@ -14,7 +14,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.event_name }}
   cancel-in-progress: true
 
 jobs:
@@ -30,6 +30,7 @@ jobs:
       - run: npm run build -w packages/ui
       - run: npm run build -w apps/preview
       - name: Crawl public candidate sources
+        if: github.event_name != 'push'
         continue-on-error: true
         timeout-minutes: 360
         run: |
