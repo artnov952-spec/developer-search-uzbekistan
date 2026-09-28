@@ -1,5 +1,5 @@
 import http from 'node:http'
-import { getSession, loginAttemptLimited, recordFailedCode, recordLoginAttempt, revokeSession, verifyCode } from './auth.mjs'
+import { getSession, loginAttemptLimited, recordAuthEvent, recordFailedCode, recordLoginAttempt, revokeSession, verifyCode } from './auth.mjs'
 import { handleUpdate } from './telegram.mjs'
 import { candidateRow, criterionRow, runMonitoringCycle, validateCandidate, validateCriterion } from './product.mjs'
 
@@ -13,6 +13,8 @@ async function body(req) {
 }
 function cookie(value, config, clear=false) { return `${COOKIE}=${clear?'':encodeURIComponent(value)}; Path=/; HttpOnly; SameSite=Strict; ${config.secureCookies?'Secure; ':''}Max-Age=${clear?0:2592000}` }
 function sameOrigin(req, config) { return !req.headers.origin || req.headers.origin === config.appOrigin }
+function clientIp(req) { return String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim().slice(0,100) || null }
+function eventRow(row) { return { id:row.id,userId:row.user_id,telegramUserId:row.telegram_user_id,displayName:row.display_name,phoneNumber:row.phone_number,eventType:row.event_type,success:Boolean(row.success),ipAddress:row.ip_address,userAgent:row.user_agent,details:JSON.parse(row.details_json||'{}'),createdAt:row.created_at } }
 export function createServer({ config, db, signal, telegramRuntime }) {
   return http.createServer(async (req,res)=>{
     try {
@@ -28,7 +30,7 @@ export function createServer({ config, db, signal, telegramRuntime }) {
       if(url.pathname.startsWith('/api/')&&!sameOrigin(req,config)) return json(res,403,{error:'origin_not_allowed'})
       if(req.method==='GET'&&url.pathname==='/api/auth/me') {
         const session=getSession(db,cookies(req)[COOKIE],config.sessionSecret)
-        return session?json(res,200,{user:{telegramUserId:session.telegram_user_id,displayName:session.display_name}}):json(res,401,{error:'unauthenticated'})
+        return session?json(res,200,{user:{telegramUserId:session.telegram_user_id,displayName:session.display_name,phoneNumber:session.phone_number}}):json(res,401,{error:'unauthenticated'})
       }
       if(req.method==='POST'&&url.pathname==='/api/auth/verify') {
         const key=`verify:${req.socket.remoteAddress||'unknown'}`
@@ -36,10 +38,11 @@ export function createServer({ config, db, signal, telegramRuntime }) {
         const input=await body(req); const code=String(input.code||'')
         const result=verifyCode(db,code,config.sessionSecret)
         recordLoginAttempt(db,key,config.sessionSecret,Boolean(result))
-        if(!result){recordFailedCode(db,code,config.sessionSecret);return json(res,401,{error:'invalid_or_expired_code'})}
+        if(!result){recordFailedCode(db,code,config.sessionSecret);recordAuthEvent(db,{eventType:'login_failed',success:false,ipAddress:clientIp(req),userAgent:String(req.headers['user-agent']||'').slice(0,500),details:{reason:'invalid_or_expired_code'}});return json(res,401,{error:'invalid_or_expired_code'})}
+        recordAuthEvent(db,{userId:result.user.id,telegramUserId:result.user.telegramUserId,displayName:result.user.displayName,phoneNumber:result.user.phoneNumber,eventType:'login_success',ipAddress:clientIp(req),userAgent:String(req.headers['user-agent']||'').slice(0,500)})
         return json(res,200,{user:result.user},{'set-cookie':cookie(result.token,config)})
       }
-      if(req.method==='POST'&&url.pathname==='/api/auth/logout') { revokeSession(db,cookies(req)[COOKIE],config.sessionSecret); return json(res,200,{ok:true},{'set-cookie':cookie('',config,true)}) }
+      if(req.method==='POST'&&url.pathname==='/api/auth/logout') { const current=getSession(db,cookies(req)[COOKIE],config.sessionSecret);if(current)recordAuthEvent(db,{userId:current.user_id,telegramUserId:current.telegram_user_id,displayName:current.display_name,phoneNumber:current.phone_number,eventType:'logout',ipAddress:clientIp(req),userAgent:String(req.headers['user-agent']||'').slice(0,500)});revokeSession(db,cookies(req)[COOKIE],config.sessionSecret); return json(res,200,{ok:true},{'set-cookie':cookie('',config,true)}) }
       if(req.method==='POST'&&url.pathname==='/api/telegram/webhook'&&config.mode==='webhook') {
         if(telegramRuntime?.enabled===false)return json(res,503,{error:'telegram_disconnected'})
         if(!config.webhookSecret||req.headers['x-telegram-bot-api-secret-token']!==config.webhookSecret)return json(res,401,{error:'invalid_webhook_secret'})
@@ -47,6 +50,7 @@ export function createServer({ config, db, signal, telegramRuntime }) {
       }
       const session=getSession(db,cookies(req)[COOKIE],config.sessionSecret)
       if(url.pathname.startsWith('/api/')&&!session)return json(res,401,{error:'unauthenticated'})
+      if(req.method==='GET'&&url.pathname==='/api/auth/journal'){const limit=Math.min(500,Math.max(1,Number(url.searchParams.get('limit'))||200));const rows=db.prepare('SELECT * FROM auth_events ORDER BY created_at DESC,id DESC LIMIT ?').all(limit);return json(res,200,{events:rows.map(eventRow)})}
       const criterionMatch=url.pathname.match(/^\/api\/criteria\/(\d+)$/)
       if(req.method==='GET'&&url.pathname==='/api/criteria'){const rows=db.prepare('SELECT * FROM saved_criteria WHERE user_id=? ORDER BY id DESC').all(session.user_id);return json(res,200,{criteria:rows.map(criterionRow)})}
       if(req.method==='POST'&&url.pathname==='/api/criteria'){const v=validateCriterion(await body(req));const now=Date.now(),r=db.prepare('INSERT INTO saved_criteria(user_id,name,query,filters_json,enabled,interval_minutes,next_run_at,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?)').run(session.user_id,v.name,v.query,JSON.stringify(v.filters),v.enabled===false?0:1,v.intervalMinutes||60,now,now,now);return json(res,201,{criterion:criterionRow(db.prepare('SELECT * FROM saved_criteria WHERE id=?').get(r.lastInsertRowid))})}

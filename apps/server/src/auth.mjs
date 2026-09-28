@@ -8,6 +8,9 @@ const hash = (value, secret) => crypto.createHmac('sha256', secret).update(value
 export const codeHash = (code, secret) => hash(`code:${code}`, secret)
 export const tokenHash = (token, secret) => hash(`session:${token}`, secret)
 export const attemptHash = (key, secret) => hash(`attempt:${key}`, secret)
+export function recordAuthEvent(db, { userId = null, telegramUserId = null, displayName = null, phoneNumber = null, eventType, success = true, ipAddress = null, userAgent = null, details = {}, createdAt = Date.now() }) {
+  db.prepare('INSERT INTO auth_events(user_id,telegram_user_id,display_name,phone_number,event_type,success,ip_address,user_agent,details_json,created_at) VALUES (?,?,?,?,?,?,?,?,?,?)').run(userId, telegramUserId, displayName, phoneNumber, eventType, success ? 1 : 0, ipAddress, userAgent, JSON.stringify(details), createdAt)
+}
 
 export function cleanupAuth(db, now = Date.now()) {
   db.prepare('DELETE FROM login_codes WHERE expires_at<? OR (used_at IS NOT NULL AND used_at<?)').run(now - 24 * 60 * 60_000, now - 24 * 60 * 60_000)
@@ -17,12 +20,13 @@ export function cleanupAuth(db, now = Date.now()) {
 export function issueCode(db, telegramId, displayName, secret, now = Date.now(), phoneNumber = null) {
   cleanupAuth(db, now)
   db.prepare(`INSERT INTO users(telegram_user_id,display_name,phone_number) VALUES (?,?,?) ON CONFLICT(telegram_user_id) DO UPDATE SET display_name=excluded.display_name,phone_number=COALESCE(excluded.phone_number,users.phone_number),updated_at=CURRENT_TIMESTAMP`).run(telegramId, displayName || null, phoneNumber)
-  const user = db.prepare('SELECT id FROM users WHERE telegram_user_id=?').get(telegramId)
+  const user = db.prepare('SELECT id,telegram_user_id,display_name,phone_number FROM users WHERE telegram_user_id=?').get(telegramId)
   db.prepare('UPDATE login_codes SET used_at=? WHERE user_id=? AND used_at IS NULL').run(now, user.id)
   for (let attempt = 0; attempt < 20; attempt++) {
     const code = String(crypto.randomInt(0, 1_000_000)).padStart(6, '0')
     try {
       db.prepare('INSERT INTO login_codes(user_id,code_hash,expires_at,created_at) VALUES (?,?,?,?)').run(user.id, codeHash(code, secret), now + CODE_TTL_MS, now)
+      recordAuthEvent(db, { userId: user.id, telegramUserId: user.telegram_user_id, displayName: user.display_name, phoneNumber: user.phone_number, eventType: 'code_issued', createdAt: now })
       return code
     } catch (error) {
       if (!String(error?.message).includes('UNIQUE')) throw error
@@ -34,14 +38,14 @@ export function verifyCode(db, code, secret, now = Date.now()) {
   if (!/^\d{6}$/.test(code)) return null
   db.exec('BEGIN IMMEDIATE')
   try {
-    const record = db.prepare(`SELECT lc.id,lc.user_id,u.telegram_user_id,u.display_name,lc.failed_attempts FROM login_codes lc JOIN users u ON u.id=lc.user_id WHERE lc.code_hash=? AND lc.used_at IS NULL AND lc.expires_at>? LIMIT 1`).get(codeHash(code, secret), now)
+    const record = db.prepare(`SELECT lc.id,lc.user_id,u.telegram_user_id,u.display_name,u.phone_number,lc.failed_attempts FROM login_codes lc JOIN users u ON u.id=lc.user_id WHERE lc.code_hash=? AND lc.used_at IS NULL AND lc.expires_at>? LIMIT 1`).get(codeHash(code, secret), now)
     if (!record || record.failed_attempts >= MAX_CODE_ATTEMPTS) { db.exec('ROLLBACK'); return null }
     const changed = db.prepare('UPDATE login_codes SET used_at=? WHERE id=? AND used_at IS NULL').run(now, record.id)
     if (!changed.changes) { db.exec('ROLLBACK'); return null }
     const token = crypto.randomBytes(32).toString('base64url')
     db.prepare('INSERT INTO sessions(user_id,token_hash,expires_at,created_at,last_seen_at) VALUES (?,?,?,?,?)').run(record.user_id, tokenHash(token, secret), now + SESSION_TTL_MS, now, now)
     db.exec('COMMIT')
-    return { token, user: { telegramUserId: record.telegram_user_id, displayName: record.display_name } }
+    return { token, user: { id: record.user_id, telegramUserId: record.telegram_user_id, displayName: record.display_name, phoneNumber: record.phone_number } }
   } catch (error) { db.exec('ROLLBACK'); throw error }
 }
 export function recordFailedCode(db, code, secret, now = Date.now()) {
@@ -65,7 +69,7 @@ export function recordLoginAttempt(db, key, secret, success, now = Date.now(), m
 }
 export function getSession(db, token, secret, now = Date.now()) {
   if (!token) return null
-  const session = db.prepare(`SELECT s.id,u.id AS user_id,u.telegram_user_id,u.display_name FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token_hash=? AND s.expires_at>?`).get(tokenHash(token, secret), now) || null
+  const session = db.prepare(`SELECT s.id,u.id AS user_id,u.telegram_user_id,u.display_name,u.phone_number FROM sessions s JOIN users u ON u.id=s.user_id WHERE s.token_hash=? AND s.expires_at>?`).get(tokenHash(token, secret), now) || null
   if (session) db.prepare('UPDATE sessions SET last_seen_at=? WHERE id=? AND last_seen_at<?').run(now, session.id, now - 60_000)
   return session
 }

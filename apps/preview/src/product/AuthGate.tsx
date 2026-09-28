@@ -5,7 +5,7 @@ import { BrandLogo } from './BrandLogo'
 import './mobile-auth-fix.css'
 import { apiUrl } from './api'
 
-type User = { telegramUserId: string; displayName: string | null }
+type User = { telegramUserId: string; displayName: string | null; phoneNumber?: string | null }
 
 export function AuthGate({children}:{children:(user:User)=>React.ReactNode}) {
   const [user,setUser]=useState<User|null>(null),[loading,setLoading]=useState(true),[code,setCode]=useState(''),[error,setError]=useState(''),[sending,setSending]=useState(false)
