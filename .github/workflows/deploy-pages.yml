@@ -29,6 +29,8 @@ jobs:
       - run: npm ci
       - run: npm run build -w packages/ui
       - run: npm run build -w apps/preview
+        env:
+          VITE_API_BASE: https://mac-mini.tail1ea5da.ts.net:8443
       - name: Crawl public candidate sources
         if: github.event_name != 'push'
         continue-on-error: true

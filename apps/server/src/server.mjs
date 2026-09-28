@@ -11,14 +11,17 @@ async function body(req) {
   for await (const chunk of req) { size+=chunk.length; if(size>1024*1024) throw Object.assign(new Error('Body too large'),{status:413}); chunks.push(chunk) }
   try { return JSON.parse(Buffer.concat(chunks).toString('utf8') || '{}') } catch { throw Object.assign(new Error('Invalid JSON'),{status:400}) }
 }
-function cookie(value, config, clear=false) { return `${COOKIE}=${clear?'':encodeURIComponent(value)}; Path=/; HttpOnly; SameSite=Strict; ${config.secureCookies?'Secure; ':''}Max-Age=${clear?0:2592000}` }
+function cookie(value, config, clear=false) { return `${COOKIE}=${clear?'':encodeURIComponent(value)}; Path=/; HttpOnly; SameSite=${config.secureCookies?'None':'Strict'}; ${config.secureCookies?'Secure; ':''}Max-Age=${clear?0:2592000}` }
 function sameOrigin(req, config) { return !req.headers.origin || req.headers.origin === config.appOrigin }
+function cors(req,res,config){if(req.headers.origin===config.appOrigin){res.setHeader('access-control-allow-origin',config.appOrigin);res.setHeader('access-control-allow-credentials','true');res.setHeader('vary','Origin')}}
 function clientIp(req) { return String(req.headers['x-forwarded-for'] || req.socket.remoteAddress || '').split(',')[0].trim().slice(0,100) || null }
 function eventRow(row) { return { id:row.id,userId:row.user_id,telegramUserId:row.telegram_user_id,displayName:row.display_name,phoneNumber:row.phone_number,eventType:row.event_type,success:Boolean(row.success),ipAddress:row.ip_address,userAgent:row.user_agent,details:JSON.parse(row.details_json||'{}'),createdAt:row.created_at } }
 export function createServer({ config, db, signal, telegramRuntime }) {
   return http.createServer(async (req,res)=>{
     try {
       const url=new URL(req.url,'http://local')
+      cors(req,res,config)
+      if(req.method==='OPTIONS'&&url.pathname.startsWith('/api/')){if(!sameOrigin(req,config))return json(res,403,{error:'origin_not_allowed'});res.writeHead(204,{'access-control-allow-methods':'GET,POST,PATCH,DELETE,OPTIONS','access-control-allow-headers':'content-type'});return res.end()}
       if(req.method==='GET'&&url.pathname==='/api/health') return json(res,signal?.aborted?503:200,{status:signal?.aborted?'stopping':'ok'})
       if(req.method==='GET'&&url.pathname==='/api/ready') {
         if(signal?.aborted)return json(res,503,{status:'stopping',ready:false})
