@@ -1,0 +1,12 @@
+#!/usr/bin/env node
+import fs from 'node:fs'
+import path from 'node:path'
+import {migrate,openDatabase} from './db.mjs'
+const file=process.argv[2];if(!file)throw new Error('Usage: node import-crawler.mjs <crawler-output.json>')
+const input=JSON.parse(fs.readFileSync(file,'utf8'));if(!Array.isArray(input.candidates))throw new Error('Invalid crawler output')
+const dbPath=path.resolve(process.env.DEVELOPER_SEARCH_DB_PATH||'./data/developer-search.sqlite'),db=openDatabase(dbPath);migrate(db);const now=Date.now();let imported=0,skipped=0
+const statement=db.prepare('INSERT INTO candidates(external_id,name,headline,location,experience_years,skills_json,contacts_json,source_url,photo_url,photo_source_url,photo_method,data_json,created_at,updated_at) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(external_id) DO UPDATE SET name=excluded.name,headline=excluded.headline,location=excluded.location,experience_years=excluded.experience_years,skills_json=excluded.skills_json,contacts_json=excluded.contacts_json,source_url=excluded.source_url,photo_url=excluded.photo_url,photo_source_url=excluded.photo_source_url,photo_method=excluded.photo_method,data_json=excluded.data_json,updated_at=excluded.updated_at')
+const sleepSync=ms=>Atomics.wait(new Int32Array(new SharedArrayBuffer(4)),0,0,ms)
+function transaction(rows){for(let retry=0;;retry++){try{db.exec('BEGIN IMMEDIATE');for(const row of rows){const contacts=(row.contacts||[]).filter(x=>x&&x.value&&x.sourceUrl);if(!contacts.length){skipped++;continue}const p=row.profile||{},photo=row.photo&&/^https?:\/\//i.test(row.photo.url||'')&&/^https?:\/\//i.test(row.photo.sourceUrl||'')?row.photo:null,name=String(row.name||contacts[0].value||'').trim();if(!name){skipped++;continue}statement.run(String(row.candidateId||row.inputUrl),name,p.role||p.seniority||null,p.location||null,p.experienceYears??null,JSON.stringify(p.skills||[]),JSON.stringify(contacts.map(x=>({type:x.type,value:x.value,sourceUrl:x.sourceUrl}))),row.inputUrl||contacts[0].sourceUrl,photo?.url||null,photo?.sourceUrl||null,photo?.method||null,JSON.stringify({profile:p,source:row.source,discoveryChain:contacts[0].discoveryChain||[]}),now,now);imported++}db.exec('COMMIT');return}catch(error){try{db.exec('ROLLBACK')}catch{};if(retry>=5||!String(error.message).includes('database is locked'))throw error;sleepSync(100*2**retry)}}}
+try{for(let offset=0;offset<input.candidates.length;offset+=200)transaction(input.candidates.slice(offset,offset+200))}finally{db.close()}
+console.log(JSON.stringify({imported,skipped}))

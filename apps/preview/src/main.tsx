@@ -5,7 +5,8 @@ import './tailwind.css'
 import { ThemeProvider, ACCENTS, FONTS, TooltipProvider, Toaster } from '@cloudplus/ui'
 import type { Theme, BrandProfile, Density, Accent, Font } from '@cloudplus/ui'
 import { DocsShell } from './docs/DocsShell'
-import { DeveloperSearchApp } from './product/DeveloperSearchApp'
+import { ProductApp } from './product/ProductApp'
+import { AuthGate } from './product/AuthGate'
 
 const params = new URLSearchParams(window.location.search)
 const theme: Theme = params.get('theme') === 'dark' ? 'dark' : 'light'
@@ -21,7 +22,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <ThemeProvider defaultTheme={theme} defaultBrand={brand} defaultDensity={density} defaultAccent={accent} defaultFont={font}>
       <TooltipProvider>
-        {showDocs ? <DocsShell /> : <DeveloperSearchApp />}
+        {showDocs ? <DocsShell /> : <AuthGate>{user => <ProductApp user={user} />}</AuthGate>}
         <Toaster />
       </TooltipProvider>
     </ThemeProvider>

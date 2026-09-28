@@ -1,0 +1,14 @@
+{
+  "name": "@developer-search/server",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch src/index.mjs",
+    "start": "node src/index.mjs",
+    "migrate": "node src/migrate.mjs",
+    "test": "node --test test/*.test.mjs",
+    "import:crawler": "node src/import-crawler.mjs"
+  },
+  "engines": { "node": ">=22.5" }
+}

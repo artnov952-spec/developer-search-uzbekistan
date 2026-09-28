@@ -43,18 +43,14 @@ npm run build -w packages/ui
 npm run dev:preview
 ```
 
-Приложение доступно на `http://localhost:4180/search`. Разделы имеют отдельные адреса:
+Приложение доступно на `http://localhost:4180/search`. Рабочие разделы имеют отдельные адреса:
 
-- `/search` — поиск и импорт результатов краулера;
-- `/people` — база публичных контактов;
-- `/collections` — сохраняемые подборки;
-- `/messages` — локальная история коммуникаций;
-- `/analytics` — статистика базы и каналов связи;
-- `/settings` — профиль и параметры рабочего пространства;
-- `/help` — инструкция по рабочему процессу.
+- `/search` — поиск по серверной базе кандидатов;
+- `/candidates/:id` — профиль кандидата с публичными контактами и источниками;
+- `/tracking` — серверные критерии, запуски мониторинга и история совпадений;
+- `/settings` — профиль и реальное состояние Telegram-подключения.
 
-Подборки, сообщения, импортированные данные и настройки сохраняются в `localStorage` браузера.
-Встроенные четыре профиля явно помечены как демонстрационные и не выдаются за результат живого поиска.
+Продуктовые данные хранятся в SQLite и загружаются только через защищенный API. Демонстрационных профилей, `localStorage` и имитации отправки сообщений в рабочем приложении нет.
 
 ### Загрузить реальные результаты
 
@@ -123,3 +119,66 @@ npm run gen:api      # обновить API.md (входит и в npm run build
 это и есть проверенный пример интеграции.
 
 **Требуется React 19.** У актуального shadcn ref передаётся обычным пропом, на React 18 это не работает.
+
+## Backend и вход через Telegram
+
+Первый backend-срез находится в `apps/server` и использует встроенный `node:sqlite` (Node.js 22.5+). Он предоставляет `/api/health`, `/api/auth/verify`, `/api/auth/me`, `/api/auth/logout`, хранит миграции SQLite и выдает защищенную `HttpOnly; SameSite=Strict` сессию. Одноразовый шестизначный код хранится только в виде HMAC-SHA-256, действует 5 минут и помечается использованным атомарно.
+
+```bash
+cp .env.example .env.local
+# заполните значения локально, затем экспортируйте их в окружение, например:
+set -a; source .env.local; set +a
+npm run dev:server      # API: http://127.0.0.1:4182
+npm run dev:preview     # UI:  http://localhost:4180/search
+```
+
+Для локального Mac mini используйте `TELEGRAM_MODE=polling`: бот принимает `/start` или `/login` только от ID из `DEVELOPER_SEARCH_ALLOWED_TELEGRAM_USER_IDS` и присылает одноразовый код. Токен читается исключительно из `DEVELOPER_SEARCH_TELEGRAM_BOT_TOKEN` и не сохраняется в SQLite. Для production задайте `NODE_ENV=production` (cookie получает `Secure`) и HTTPS.
+
+Webhook-режим предусмотрен через `TELEGRAM_MODE=webhook`: Telegram должен отправлять update на `POST /api/telegram/webhook` с заголовком `X-Telegram-Bot-Api-Secret-Token`, равным `DEVELOPER_SEARCH_TELEGRAM_WEBHOOK_SECRET`. Backend намеренно не регистрирует webhook сам — внешний URL и изменение настроек бота остаются отдельным подтверждаемым действием.
+
+Проверки:
+
+```bash
+npm test
+npm run typecheck
+npm run build
+```
+
+### Безопасный локальный runtime на macOS
+
+Токен бота хранится в macOS Keychain под service name `DEVELOPER_SEARCH_TELEGRAM_BOT_TOKEN`. Скрипт запуска получает его через `/usr/bin/security` непосредственно в переменную окружения процесса, не записывает на диск и не печатает. Остальные локальные параметры создаются один раз в игнорируемом `.runtime/server.env` с правами `600`:
+
+```bash
+./scripts/setup-local-runtime.sh
+./scripts/run-server-local.sh
+```
+
+Повторный setup сохраняет существующий session secret, чтобы не инвалидировать активные сессии. В runtime-файле задаются разрешенный Telegram ID `910449149`, polling, loopback host, путь SQLite и абсолютный путь Node.js.
+
+Шаблоны пользовательских launchd-сервисов находятся в `ops/com.developer-search.server.plist.template` и `ops/com.developer-search.frontend.plist.template`. На рабочем Mac mini они установлены как `com.developer-search.server` и `com.developer-search.frontend`, автоматически запускаются после входа пользователя и обслуживают API на `127.0.0.1:4182` и собранный React-интерфейс на `127.0.0.1:4180/search`. Для локального хостинга frontend собирается командой `VITE_BASE_PATH=/ npm run build -w apps/preview`; обычная production-сборка сохраняет GitHub Pages base path.
+
+Проверка:
+
+```bash
+curl --fail http://127.0.0.1:4182/api/health
+curl --fail http://127.0.0.1:4182/api/ready
+curl --fail http://127.0.0.1:4180/search
+```
+
+## Developer Search: текущая серверная архитектура
+
+Продуктовый интерфейс больше не использует `localStorage`, демонстрационные профили или имитацию Telegram. После входа React-клиент получает кандидатов, критерии, историю совпадений и состояние Telegram только из защищенного API.
+
+Основные API после авторизации: `/api/candidates`, `/api/criteria`, `/api/monitoring/runs`, `/api/monitoring/matches`, `/api/telegram/status`. Изменяющие запросы защищены проверкой Origin, все данные пользователя изолированы серверной сессией. Планировщик каждые 30 секунд запускает просроченные критерии; уникальность `(criterion_id, candidate_id)` и transactional outbox исключают повторные уведомления.
+
+Полный возобновляемый обход публичных источников:
+
+```bash
+npm run crawl -- \
+  --input tools/contact-crawler/sources.json \
+  --output data/crawler-full.json \
+  --checkpoint data/crawler-full.checkpoint.json \
+  --resume --listing-pages 0 --candidates 0
+```
+
+Нули означают отсутствие искусственного лимита. CLI пишет checkpoint и итог атомарно, не использует LLM, исключает закрытые профили, платные контакты, списки участников Telegram и публикации, не являющиеся резюме.
