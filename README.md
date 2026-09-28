@@ -155,7 +155,7 @@ npm run build
 
 Повторный setup сохраняет существующий session secret, чтобы не инвалидировать активные сессии. В runtime-файле задаются разрешенный Telegram ID `910449149`, polling, loopback host, путь SQLite и абсолютный путь Node.js.
 
-Шаблоны пользовательских launchd-сервисов находятся в `ops/com.developer-search.server.plist.template` и `ops/com.developer-search.frontend.plist.template`. На рабочем Mac mini они установлены как `com.developer-search.server` и `com.developer-search.frontend`, автоматически запускаются после входа пользователя и обслуживают API на `127.0.0.1:4182` и собранный React-интерфейс на `127.0.0.1:4180/search`. Для локального хостинга frontend собирается командой `VITE_BASE_PATH=/ npm run build -w apps/preview`; обычная production-сборка сохраняет GitHub Pages base path.
+Шаблоны пользовательских launchd-сервисов находятся в `ops/`. На рабочем Mac mini `com.developer-search.server` и `com.developer-search.frontend` автоматически запускаются после входа пользователя и обслуживают API на `127.0.0.1:4182` и собранный React-интерфейс на `127.0.0.1:4180/search`. `com.developer-search.crawler` ежедневно в 21:00 по локальному времени запускает полный возобновляемый обход и импортирует результат в SQLite. Для локального хостинга frontend собирается командой `VITE_BASE_PATH=/ npm run build -w apps/preview`; обычная production-сборка сохраняет GitHub Pages base path.
 
 Проверка:
 

@@ -5,8 +5,8 @@ on:
     branches: [main]
   workflow_dispatch:
   schedule:
-    # Daily at 03:20 UTC (08:20 Uzbekistan time). The job publishes a new static snapshot.
-    - cron: '20 3 * * *'
+    # Daily at 16:00 UTC (21:00 Uzbekistan time). The job publishes a new static snapshot.
+    - cron: '0 16 * * *'
 
 permissions:
   contents: read

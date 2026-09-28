@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0"><dict>
+  <key>Label</key><string>com.developer-search.crawler</string>
+  <key>ProgramArguments</key><array><string>__REPOSITORY_PATH__/scripts/run-full-crawl-local.sh</string></array>
+  <key>WorkingDirectory</key><string>__REPOSITORY_PATH__</string>
+  <key>StartCalendarInterval</key><dict>
+    <key>Hour</key><integer>21</integer>
+    <key>Minute</key><integer>0</integer>
+  </dict>
+  <key>StandardOutPath</key><string>__REPOSITORY_PATH__/logs/crawler.stdout.log</string>
+  <key>StandardErrorPath</key><string>__REPOSITORY_PATH__/logs/crawler.stderr.log</string>
+  <key>ProcessType</key><string>Background</string>
+  <key>LowPriorityIO</key><true/>
+</dict></plist>
