@@ -1,5 +1,5 @@
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
-import { LockKeyhole, Send } from 'lucide-react'
+import { ShieldCheck, Send } from 'lucide-react'
 import { Button } from '@cloudplus/ui'
 import { BrandLogo } from './BrandLogo'
 import './mobile-auth-fix.css'
@@ -38,7 +38,7 @@ export function AuthGate({children}:{children:(user:User)=>React.ReactNode}) {
       <p className="auth-code-note">Код действует 5 минут</p>
       {error&&<p className="auth-error" role="alert">{error}</p>}
       <Button type="submit" disabled={sending||code.length!==6}>{sending?'Проверяем…':'Войти'}</Button>
-      <small><LockKeyhole aria-hidden="true"/>Защищенная корпоративная сессия</small>
+      <small><ShieldCheck aria-hidden="true"/>Защищенная корпоративная сессия</small>
     </form>
   </main>
 }
