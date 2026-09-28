@@ -14,9 +14,9 @@ export function cleanupAuth(db, now = Date.now()) {
   db.prepare('DELETE FROM sessions WHERE expires_at<?').run(now)
   db.prepare('DELETE FROM login_attempt_windows WHERE window_started_at<? AND (blocked_until IS NULL OR blocked_until<?)').run(now - ATTEMPT_WINDOW_MS, now)
 }
-export function issueCode(db, telegramId, displayName, secret, now = Date.now()) {
+export function issueCode(db, telegramId, displayName, secret, now = Date.now(), phoneNumber = null) {
   cleanupAuth(db, now)
-  db.prepare(`INSERT INTO users(telegram_user_id,display_name) VALUES (?,?) ON CONFLICT(telegram_user_id) DO UPDATE SET display_name=excluded.display_name,updated_at=CURRENT_TIMESTAMP`).run(telegramId, displayName || null)
+  db.prepare(`INSERT INTO users(telegram_user_id,display_name,phone_number) VALUES (?,?,?) ON CONFLICT(telegram_user_id) DO UPDATE SET display_name=excluded.display_name,phone_number=COALESCE(excluded.phone_number,users.phone_number),updated_at=CURRENT_TIMESTAMP`).run(telegramId, displayName || null, phoneNumber)
   const user = db.prepare('SELECT id FROM users WHERE telegram_user_id=?').get(telegramId)
   db.prepare('UPDATE login_codes SET used_at=? WHERE user_id=? AND used_at IS NULL').run(now, user.id)
   for (let attempt = 0; attempt < 20; attempt++) {

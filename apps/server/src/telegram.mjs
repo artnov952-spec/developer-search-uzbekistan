@@ -1,6 +1,12 @@
 import { issueCode } from './auth.mjs'
 
 const sleep = ms => new Promise(resolve => setTimeout(resolve, ms))
+const contactKeyboard = {
+  keyboard: [[{ text: 'Поделиться номером телефона', request_contact: true }]],
+  resize_keyboard: true,
+  one_time_keyboard: true,
+  input_field_placeholder: 'Нажмите кнопку ниже для входа'
+}
 export async function telegramCall(token, method, body, signal) {
   const response = await fetch(`https://api.telegram.org/bot${token}/${method}`, { method: 'POST', headers: { 'content-type':'application/json' }, body: JSON.stringify(body), signal })
   if (!response.ok) throw new Error(`Telegram API ${method} failed with HTTP ${response.status}`)
@@ -11,11 +17,42 @@ export async function telegramCall(token, method, body, signal) {
 export async function handleUpdate(update, { config, db, signal }) {
   const message = update?.message
   const senderId = message?.from?.id == null ? '' : String(message.from.id)
-  if (!message?.text || !config.allowedIds.has(senderId)) return
-  if (!/^\/(start|login)(?:@\w+)?(?:\s|$)/i.test(message.text)) return
+  if (!message || !config.allowedIds.has(senderId)) return
+  const isLoginCommand = /^\/(start|login)(?:@\w+)?(?:\s|$)/i.test(message.text || '')
+  if (isLoginCommand) {
+    await telegramCall(config.token, 'sendMessage', {
+      chat_id: message.chat.id,
+      text: 'Для входа подтвердите номер телефона. Код появится только после отправки вашего контакта.',
+      reply_markup: contactKeyboard
+    }, signal)
+    return
+  }
+  if (!message.contact) return
+  if (String(message.contact.user_id || '') !== senderId) {
+    await telegramCall(config.token, 'sendMessage', {
+      chat_id: message.chat.id,
+      text: 'Нужно отправить именно свой контакт кнопкой ниже.',
+      reply_markup: contactKeyboard
+    }, signal)
+    return
+  }
+  const phoneNumber = String(message.contact.phone_number || '').trim()
+  if (!/^\+?[0-9]{7,15}$/.test(phoneNumber)) {
+    await telegramCall(config.token, 'sendMessage', {
+      chat_id: message.chat.id,
+      text: 'Не удалось проверить номер. Нажмите кнопку и отправьте контакт ещё раз.',
+      reply_markup: contactKeyboard
+    }, signal)
+    return
+  }
   const name = [message.from.first_name, message.from.last_name].filter(Boolean).join(' ')
-  const code = issueCode(db, senderId, name, config.sessionSecret)
-  await telegramCall(config.token, 'sendMessage', { chat_id: message.chat.id, text: `Код входа: ${code}\nОн действует 5 минут и используется один раз.`, protect_content: true }, signal)
+  const code = issueCode(db, senderId, name, config.sessionSecret, Date.now(), phoneNumber)
+  await telegramCall(config.token, 'sendMessage', {
+    chat_id: message.chat.id,
+    text: `Код входа: ${code}\nОн действует 5 минут и используется один раз.`,
+    protect_content: true,
+    reply_markup: { remove_keyboard: true }
+  }, signal)
 }
 export async function runPolling(context) {
   const { config, signal, db, telegramRuntime } = context
