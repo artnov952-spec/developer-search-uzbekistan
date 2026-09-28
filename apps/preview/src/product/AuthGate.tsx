@@ -18,11 +18,12 @@ export function AuthGate({children}:{children:(user:User)=>React.ReactNode}) {
   if(loading)return <div className="auth-screen auth-loading"><BrandLogo/><p>Проверяем сессию…</p></div>
   if(user)return <>{children(user)}</>
   const botUrl=import.meta.env.VITE_TELEGRAM_BOT_URL||'https://t.me/developer_search_bot'
+  const brandLogoUrl=`${import.meta.env.BASE_URL}brand/cloudplus-horizontal-tight.png`
   return <main className="auth-screen">
-    <header className="auth-brandbar"><BrandLogo/><span aria-hidden="true"/><p>Разработчики Узбекистана</p></header>
+    <header className="auth-brandbar"><img className="auth-official-logo" src={brandLogoUrl} alt="Cloudplus"/><span aria-hidden="true"/><p>Разработчики Узбекистана</p></header>
     <section className="auth-intro">
       <p className="auth-eyebrow">Внутренний сервис Cloudplus</p>
-      <h1>Вход в систему<br/>поиска</h1>
+      <h1><span>Вход в систему</span><br/><span>поиска</span></h1>
       <p className="auth-lead">Поиск кандидатов в Узбекистане<br/>для команды Cloudplus.</p>
     </section>
     <form className="auth-card" onSubmit={submit}>
